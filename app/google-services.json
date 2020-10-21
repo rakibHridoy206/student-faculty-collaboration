@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "306349631079",
+    "firebase_url": "https://bubtapps.firebaseio.com",
+    "project_id": "bubtapps",
+    "storage_bucket": "bubtapps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306349631079:android:18ebb4706924239c3356c2",
+        "android_client_info": {
+          "package_name": "com.example.studentteachercollaborations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306349631079-c99n14naid2b1vb53rou3sr0g2lb0m6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2rQXH2AFy5cAxa20iK22s1NvtpQdk_vM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306349631079-c99n14naid2b1vb53rou3sr0g2lb0m6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
