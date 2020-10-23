@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/colorWhite"/>
     <item>
-        <bitmap android:src="@drawable/logo"
+        <bitmap android:src="@drawable/logo_bubt"
             android:gravity="center"/>
     </item>
 

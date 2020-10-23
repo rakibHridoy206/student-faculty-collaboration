@@ -37,6 +37,7 @@ public class StudentsBooksShow extends Fragment {
     private DatabaseReference databaseReference;
     private DatabaseReference databaseReferenceFirstSemester;
     private List<UploadPdfFiles> uploadFilesList;
+    private String semesterno;
 
     public StudentsBooksShow() {
     }
@@ -57,11 +58,17 @@ public class StudentsBooksShow extends Fragment {
         View view = inflater.inflate(R.layout.fragment_students_books, container, false);
         listView = view.findViewById(R.id.pdfListViewStudents);
 
+
         Bundle bundle = this.getArguments();
-        final String data = bundle.getString("key");
+        if (bundle != null){
+            final String data = bundle.getString("key");
+            semesterno = data;
+            requireActivity().setTitle(data+ " Semester Books");
+        }
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("UploadedBooksLinks");
-        databaseReferenceFirstSemester = databaseReference.child(data);
+        databaseReferenceFirstSemester = databaseReference.child(semesterno);
 
         uploadFilesList = new ArrayList<>();
         showAllPDFs();
@@ -129,7 +136,7 @@ public class StudentsBooksShow extends Fragment {
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, uploads){
                     @Override
-                    public View getView(int position, View convertView, ViewGroup parent) {
+                    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);
                         TextView textView = view.findViewById(android.R.id.text1);
                         textView.setTextColor(Color.BLACK);

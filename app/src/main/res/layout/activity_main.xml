@@ -6,78 +6,142 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="#F0F8FF"
+    android:background="@color/colorWhite"
     android:id="@+id/fragmentContainerHomePage"
     tools:context=".MainActivity">
+
+    <include
+        layout="@layout/custom_action_bar"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/logo_bubt"
+            />
+    </FrameLayout>
+
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/admin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
+        android:layout_height="160dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
         app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="#FFFAFA"
-        android:layout_margin="10dp">
-        <TextView
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/colorBUBTBlue"
+        android:foreground="?attr/selectableItemBackground">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:text="Admin"
-            android:textAllCaps="true"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:textSize="35sp"
-            android:background="#00308F"
-            android:padding="10dp"
-            />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="220dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="Admin"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:textFontWeight="100"
+                android:padding="10dp"
+                tools:targetApi="p"
+                android:fontFamily="@font/lobster_two_bold"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/ic_management"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/activity_vertical_margin"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/faculty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
+        android:layout_height="160dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
         app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="#FFFAFA"
-        android:layout_margin="10dp">
-        <TextView
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/colorBUBTBlue"
+        android:foreground="?attr/selectableItemBackground">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:text="faculty"
-            android:textAllCaps="true"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:textSize="35sp"
-            android:background="#00308F"
-            android:padding="10dp"
-            />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="220dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="Faculty"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:textFontWeight="100"
+                android:padding="10dp"
+                tools:targetApi="p"
+                android:fontFamily="@font/lobster_two_bold"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/ic_teacher_1"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/activity_vertical_margin"/>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/student"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
+        android:layout_height="160dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
         app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="#FFFAFA"
-        android:layout_margin="10dp">
-        <TextView
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/colorBUBTBlue"
+        android:foreground="?attr/selectableItemBackground">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:text="student"
-            android:textAllCaps="true"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:textSize="35sp"
-            android:background="#00308F"
-            android:padding="10dp"
-            />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="220dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="Student"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:textFontWeight="100"
+                android:padding="10dp"
+                tools:targetApi="p"
+                android:fontFamily="@font/lobster_two_bold"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/ic_students_5"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/activity_vertical_margin" />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

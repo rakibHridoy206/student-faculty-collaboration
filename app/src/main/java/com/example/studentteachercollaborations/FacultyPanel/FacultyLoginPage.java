@@ -5,32 +5,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentteachercollaborations.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class FacultyLoginPage extends Fragment {
     private EditText emailET,passET;
-    private Button loginBtn;
-    private TextView signUpBtn;
     private Context context;
     private FirebaseAuth firebaseAuth;
     private FacultyAuthListener facultyAuthListener;
@@ -51,18 +50,22 @@ public class FacultyLoginPage extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setTitle("LOGIN");
+        //requireActivity().setTitle("FACULTY LOGIN");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_login, container, false);
+        TextView customAppBar;
+        customAppBar = view.findViewById(R.id.customBarTextViewLogin);
+        customAppBar.setText("FACULTY LOGIN");
+
         databaseReference = FirebaseDatabase.getInstance().getReference("FACULTY_INFO");
         firebaseAuth = FirebaseAuth.getInstance();
         emailET = view.findViewById(R.id.emailInputET);
         passET = view.findViewById(R.id.passwordInputET);
-        loginBtn = view.findViewById(R.id.loginBtn);
-        signUpBtn = view.findViewById(R.id.signUpBTN);
+        TextView loginBtn = view.findViewById(R.id.loginBtn);
+        TextView signUpBtn = view.findViewById(R.id.signUpBTN);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,16 +88,16 @@ public class FacultyLoginPage extends Fragment {
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     if (snapshot.exists()){
                                         if (task.isSuccessful()) {
-                                            if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                                            if(firebaseAuth.getCurrentUser() != null && firebaseAuth.getCurrentUser().isEmailVerified()){
                                                 facultyAuthListener.onFacultyLoginSuccessful();
-                                                Toast.makeText(getActivity(), "Successfully Logged In",Toast.LENGTH_SHORT).show();
+                                                snackbarShow("Successfully Logged In");
                                                 facultyAuthListener.onFacultyLoginSuccessful();
                                             }else {
-                                                Toast.makeText(context, "Please verify your email address.", Toast.LENGTH_SHORT).show();
+                                                snackbarShow("Please verify your email address");
                                             }
                                         }
                                     }else{
-                                        Toast.makeText(context, "You don't have an account in this section", Toast.LENGTH_SHORT).show();
+                                        snackbarShow("You don't have an account in faculty section");
                                     }
                                 }
 
@@ -121,6 +124,20 @@ public class FacultyLoginPage extends Fragment {
             }
         });
         return view;
+    }
+
+    private void snackbarShow(String s){
+        Snackbar make = Snackbar.make(requireActivity().findViewById(android.R.id.content), s, Snackbar.LENGTH_LONG);
+        View snackbarLayout = make.getView();
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+
+        );
+        lp.setMargins(200, 700, 0, 0);
+        snackbarLayout.setLayoutParams(lp);
+        snackbarLayout.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.colorLightBlue));
+        make.show();
     }
 
     public interface FacultyAuthListener{

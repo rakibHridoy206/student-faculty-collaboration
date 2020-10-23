@@ -7,8 +7,19 @@ public class FacultyInfo {
     private String facultyPhone;
     private String facultyDesignation;
     private String facultyPassword;
+    private String facultyImageUrl;
 
     public FacultyInfo() {
+    }
+
+    public FacultyInfo(String facultyId, String facultyName, String facultyEmail, String facultyPhone, String facultyDesignation, String facultyPassword, String facultyImageUrl) {
+        this.facultyId = facultyId;
+        this.facultyName = facultyName;
+        this.facultyEmail = facultyEmail;
+        this.facultyPhone = facultyPhone;
+        this.facultyDesignation = facultyDesignation;
+        this.facultyPassword = facultyPassword;
+        this.facultyImageUrl = facultyImageUrl;
     }
 
     public FacultyInfo(String facultyId, String facultyName, String facultyEmail, String facultyPhone, String facultyDesignation, String facultyPassword) {
@@ -66,5 +77,13 @@ public class FacultyInfo {
 
     public void setFacultyPassword(String facultyPassword) {
         this.facultyPassword = facultyPassword;
+    }
+
+    public String getFacultyImageUrl() {
+        return facultyImageUrl;
+    }
+
+    public void setFacultyImageUrl(String facultyImageUrl) {
+        this.facultyImageUrl = facultyImageUrl;
     }
 }

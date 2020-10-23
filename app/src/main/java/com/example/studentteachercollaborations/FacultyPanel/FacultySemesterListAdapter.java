@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,12 +25,12 @@ public class FacultySemesterListAdapter extends RecyclerView.Adapter<FacultySeme
         this.facultySemesterNoClick = facultySemesterNoClick;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem = layoutInflater.inflate(R.layout.layout_list_books, parent, false);
-        ViewHolder viewHolder = new ViewHolder(listItem);
-        return viewHolder;
+        return new ViewHolder(listItem);
     }
 
     @Override
@@ -41,40 +43,40 @@ public class FacultySemesterListAdapter extends RecyclerView.Adapter<FacultySeme
                 String semesterNo = semesterLists[position].getSemesterNo();
                 switch (semesterNo){
                     case "First Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_1");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("First");
                         break;
                     case "Second Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_2");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Second");
                         break;
                     case "Third Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_3");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Third");
                         break;
                     case "Fourth Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_4");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Fourth");
                         break;
                     case "Fifth Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_5");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Fifth");
                         break;
                     case "Sixth Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_6");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Sixth");
                         break;
                     case "Seventh Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_7");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Seventh");
                         break;
                     case "Eighth Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_8");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Eighth");
                         break;
                     case "Ninth Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_9");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Ninth");
                         break;
                     case "Tenth Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_10");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Tenth");
                         break;
                     case "Eleventh Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_11");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Eleventh");
                         break;
                     case "Twelfth Semester":
-                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Semester_12");
+                        facultySemesterNoClick.onFacultySemesterNoClickSuccessful("Twelfth");
                         break;
                 }
             }

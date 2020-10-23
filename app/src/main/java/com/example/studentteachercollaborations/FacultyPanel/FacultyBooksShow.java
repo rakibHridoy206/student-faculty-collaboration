@@ -46,10 +46,7 @@ import static android.app.Activity.RESULT_OK;
 public class FacultyBooksShow extends Fragment {
     private Context context;
     private ListView listView;
-    private FloatingActionButton fab;
     private StorageReference storageReference;
-    private StorageReference storageReferenceData;
-    private DatabaseReference databaseReference;
     private DatabaseReference databaseReferenceSemesters;
     private List<UploadPdfFiles> uploadFilesList;
     private String fileName;
@@ -67,22 +64,24 @@ public class FacultyBooksShow extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setTitle("FIRST SEMESTER BOOKS");
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            final String data = bundle.getString("key");
+            storageData = data;
+            requireActivity().setTitle(data+" Semester Books");
+        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_faculty_books, container, false);
         listView = view.findViewById(R.id.pdfListView);
-        fab = view.findViewById(R.id.pdfFAV);
-
-        Bundle bundle = this.getArguments();
-        final String data = bundle.getString("key");
-        storageData = data;
+        FloatingActionButton fab = view.findViewById(R.id.pdfFAV);
 
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference("UploadedBooksLinks");
-        databaseReferenceSemesters = databaseReference.child(data);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("UploadedBooksLinks");
+        databaseReferenceSemesters = databaseReference.child(storageData);
 
         uploadFilesList = new ArrayList<>();
         showAllPDFs();
@@ -115,7 +114,7 @@ public class FacultyBooksShow extends Fragment {
                     @Override
                     public void onClick(View v) {
                         UploadPdfFiles uploadFile = uploadFilesList.get(pos);
-                        String pdfURL = uploadFile.getUrl();
+                        //String pdfURL = uploadFile.getUrl();
                         final String pdfID = uploadFile.getId();
                         String storageFileName = uploadFile.getStorageFileName();
 
@@ -193,9 +192,9 @@ public class FacultyBooksShow extends Fragment {
                     uploads[i] = uploadFilesList.get(i).getName();
                 }
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, uploads){
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, uploads){
                     @Override
-                    public View getView(int position, View convertView, ViewGroup parent) {
+                    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);
                         TextView textView = view.findViewById(android.R.id.text1);
                         textView.setTextColor(Color.BLACK);
@@ -234,20 +233,22 @@ public class FacultyBooksShow extends Fragment {
         progressDialog.show();
         final String storageFileName = storageData + "/" + fileName + System.currentTimeMillis() + ".pdf";
         StorageReference bookStorageReference = storageReference.child(storageFileName);
-        storageReferenceData = bookStorageReference;
         bookStorageReference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uri.isComplete());
-                Uri url = uri.getResult();
-                String pdfID = databaseReferenceSemesters.push().getKey();
+                while (!uri.isComplete()) {
+                    Uri url = uri.getResult();
+                    String pdfID = databaseReferenceSemesters.push().getKey();
+                    if (pdfID != null && url != null){
+                        UploadPdfFiles uploadFiles = new UploadPdfFiles(pdfID, fileName, url.toString(), storageFileName);
+                        databaseReferenceSemesters.child(pdfID).setValue(uploadFiles);
+                        Toast.makeText(context, "File has been uploaded", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                }
 
-                assert url != null;
-                UploadPdfFiles uploadFiles = new UploadPdfFiles(pdfID, fileName, url.toString(), storageFileName);
-                databaseReferenceSemesters.child(pdfID).setValue(uploadFiles);
-                Toast.makeText(context, "File has been uploaded", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
+
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override

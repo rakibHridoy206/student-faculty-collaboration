@@ -101,7 +101,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- project name title -->
+        <!-- addProject name title -->
         <androidx.cardview.widget.CardView
             android:id="@+id/project_name"
             android:layout_width="0dp"
@@ -116,7 +116,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="  project name"
+                android:text="  addProject name"
                 android:textSize="25sp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
@@ -127,7 +127,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- project name edit text -->
+        <!-- addProject name edit text -->
         <androidx.cardview.widget.CardView
             android:id="@+id/project_nameCV"
             android:layout_width="0dp"
@@ -141,11 +141,11 @@
                 android:id="@+id/project_nameET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your project name"
+                android:hint="Enter your addProject name"
                 />
         </androidx.cardview.widget.CardView>
 
-        <!-- project link text view -->
+        <!-- addProject link text view -->
         <androidx.cardview.widget.CardView
             android:id="@+id/project_description"
             android:layout_width="0dp"
@@ -168,7 +168,7 @@
                 />
         </androidx.cardview.widget.CardView>
 
-        <!-- project description edit text -->
+        <!-- addProject description edit text -->
         <androidx.cardview.widget.CardView
             android:id="@+id/project_descriptionCV"
             android:layout_width="0dp"
@@ -181,12 +181,12 @@
                 android:id="@+id/project_linkET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your project's shareable link (e.g. github/drive)"
+                android:hint="Enter your addProject's shareable link (e.g. github/drive)"
                 android:inputType="textUri"
                 />
         </androidx.cardview.widget.CardView>
 
-        <!-- project link text view -->
+        <!-- addProject link text view -->
         <androidx.cardview.widget.CardView
             android:id="@+id/project_link"
             android:layout_width="0dp"
@@ -210,7 +210,7 @@
                 />
         </androidx.cardview.widget.CardView>
 
-        <!-- project link edit text -->
+        <!-- addProject link edit text -->
         <androidx.cardview.widget.CardView
             android:id="@+id/project_linkCV"
             android:layout_width="0dp"
@@ -222,9 +222,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/project_descriptionET"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter your project's description"
-                android:inputType="textMultiLine"/>
+                android:layout_height="100dp"
+                android:gravity="start"
+                android:hint="Enter your addProject's description"
+                android:inputType="textMultiLine"
+                android:maxLength="500"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.Guideline

@@ -44,40 +44,40 @@ public class StudentSemesterListAdapter extends RecyclerView.Adapter<StudentSeme
                 String semesterNo = semesterLists[position].getSemesterNo();
                 switch (semesterNo){
                     case "First Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_1");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("First");
                         break;
                     case "Second Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_2");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Second");
                         break;
                     case "Third Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_3");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Third");
                         break;
                     case "Fourth Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_4");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Fourth");
                         break;
                     case "Fifth Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_5");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Fifth");
                         break;
                     case "Sixth Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_6");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Sixth");
                         break;
                     case "Seventh Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_7");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Seventh");
                         break;
                     case "Eighth Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_8");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Eighth");
                         break;
                     case "Ninth Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_9");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Ninth");
                         break;
                     case "Tenth Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_10");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Tenth");
                         break;
                     case "Eleventh Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_11");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Eleventh");
                         break;
                     case "Twelfth Semester":
-                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Semester_12");
+                        studentsSemesterNoClick.onStudentsSemesterNoClickSuccessful("Twelfth");
                         break;
                 }
             }

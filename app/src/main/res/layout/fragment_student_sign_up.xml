@@ -1,153 +1,325 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorLightBlue"
     tools:context=".StudentsPortal.StudentSignUp">
 
-    <!-- Name -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="studet name"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#004d1a"/>
-    <EditText
-        android:id="@+id/studentNameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your name"
-        android:padding="15dp"
-        android:inputType="textPersonName"
-        />
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+            <TextView
+                android:id="@+id/customBarTextViewStudentSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:foregroundGravity="center"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorWhite"
+                android:text="login"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:gravity="center_vertical"
+                android:layout_marginStart="40dp"
+                android:fontFamily="@font/staatliches_regular"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Email -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="student email address"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#004d1a"/>
-    <EditText
-        android:id="@+id/studentEmailInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your email"
-        android:padding="15dp"
-        android:inputType="textEmailAddress"
-        />
+        android:layout_marginTop="?attr/actionBarSize">
 
-    <!-- Mobile -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MOBILE NO"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#004d1a"/>
-    <EditText
-        android:id="@+id/studentPhoneNoInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your mobile no"
-        android:padding="15dp"
-        android:inputType="text|phone"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                >
+                <androidx.cardview.widget.CardView
+                    android:layout_width="145dp"
+                    android:layout_height="145dp"
+                    app:cardCornerRadius="250dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/colorWhite">
 
-    <!-- Password -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="INTAKE"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#004d1a"/>
-    <EditText
-        android:id="@+id/studentIntakeInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your intake"
-        android:padding="15dp"
-        android:inputType="number"
-        />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:cardCornerRadius="250dp"
+                        android:layout_gravity="center">
 
-    <!-- Password -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ID"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#004d1a"/>
-    <EditText
-        android:id="@+id/studentIDInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your ID"
-        android:padding="15dp"
-        android:inputType="number"
-        />
+                        <ImageView
+                            android:id="@+id/profileShowStudents"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/ic_profile_picture_1"
+                            android:scaleType="centerCrop"/>
 
-    <!-- Password -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PASSWORD"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#004d1a"/>
-    <EditText
-        android:id="@+id/studentPasswordInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your password"
-        android:padding="15dp"
-        android:inputType="textPassword"
-        />
+                    </androidx.cardview.widget.CardView>
 
-    <!-- Confirm Password -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CONFIRM PASSWORD"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="0dp"
-        android:textColor="#004d1a"/>
-    <EditText
-        android:id="@+id/studentConfirmPasswordInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Re-enter your password"
-        android:padding="15dp"
-        android:inputType="textPassword"
-        />
+                </androidx.cardview.widget.CardView>
 
-    <!-- Register -->
-    <Button
-        android:id="@+id/studentRegisterBTN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40sp"
-        android:text="Register"
-        android:textColor="#02105D"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:padding="20dp"
-        />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/studentImageUpload"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:cardCornerRadius="250dp"
+                    android:layout_marginStart="235dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="114dp"
+                    app:cardBackgroundColor="@color/colorWhite">
 
-</LinearLayout>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardCornerRadius="250dp"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_upload_2"
+                            android:scaleType="centerCrop"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.cardview.widget.CardView>
+            </FrameLayout>
+
+
+            <EditText
+                android:id="@+id/studentNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="190dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textPersonName"
+                android:paddingStart="17dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="180dp"
+                android:text=" Full Name "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <EditText
+                android:id="@+id/studentEmailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="260dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:paddingStart="17dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="250dp"
+                android:text=" Email  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <EditText
+                android:id="@+id/studentPhoneNoInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="330dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="phone"
+                android:paddingStart="17dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="320dp"
+                android:text=" Mobile  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <EditText
+                android:id="@+id/studentIntakeInput"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="400dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:hint=""
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="number"
+                android:paddingStart="17dp">
+            </EditText>
+            <TextView
+                android:id="@+id/icon_email"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="390dp"
+                android:text=" Intake  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <EditText
+                android:id="@+id/studentIDInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="470dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="number"
+                android:paddingStart="17dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="460dp"
+                android:text=" ID  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <EditText
+                android:id="@+id/studentPasswordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="540dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:paddingStart="17dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="530dp"
+                android:text=" Password  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <EditText
+                android:id="@+id/studentConfirmPasswordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="610dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:paddingStart="17dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="600dp"
+                android:text=" Confirm Password  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <TextView
+                android:id="@+id/studentRegisterBTN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="715dp"
+                android:background="@drawable/blue_border_rounded_cornwe"
+                android:hint=""
+                android:textSize="15sp"
+                android:textColor="@color/colorLightBlue"
+                android:textStyle="bold"
+                android:text="                        Sign Up"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:paddingStart="17dp"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</RelativeLayout>

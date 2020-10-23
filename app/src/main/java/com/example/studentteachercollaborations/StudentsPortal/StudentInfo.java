@@ -8,11 +8,13 @@ public class StudentInfo {
     private String studentIntake;
     private String studentId;
     private String studentPassword;
+    private String imageUrl;
 
     public StudentInfo() {
     }
 
-    public StudentInfo(String studentUserId, String studentName, String studentEmail, String studentPhone, String studentIntake, String studentId, String studentPassword) {
+    public StudentInfo(String studentUserId, String studentName, String studentEmail, String studentPhone,
+                       String studentIntake, String studentId, String studentPassword, String imageUrl) {
         this.studentUserId = studentUserId;
         this.studentName = studentName;
         this.studentEmail = studentEmail;
@@ -20,6 +22,7 @@ public class StudentInfo {
         this.studentIntake = studentIntake;
         this.studentId = studentId;
         this.studentPassword = studentPassword;
+        this.imageUrl = imageUrl;
     }
 
     public String getStudentUserId() {
@@ -76,5 +79,13 @@ public class StudentInfo {
 
     public void setStudentPassword(String studentPassword) {
         this.studentPassword = studentPassword;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

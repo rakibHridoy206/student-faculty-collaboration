@@ -1,25 +1,33 @@
 package com.example.studentteachercollaborations;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.studentteachercollaborations.FacultyPanel.FacultyActivity;
 import com.example.studentteachercollaborations.StudentsPortal.StudentsActivity;
 
 public class MainActivity extends AppCompatActivity{
-    private CardView adminTV, facultyTV, studentTV;
-    private FragmentManager fragmentManager;
+    Toolbar toolbar;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Home Page");
+        toolbar = findViewById(R.id.customToolbar);
+        textView = findViewById(R.id.customBarTextView);
+        setSupportActionBar(toolbar);
+
+        CardView adminTV, facultyTV, studentTV;
+        textView.setText("Home Page");
+
         adminTV = findViewById(R.id.admin);
         facultyTV=findViewById(R.id.faculty);
         studentTV=findViewById(R.id.student);

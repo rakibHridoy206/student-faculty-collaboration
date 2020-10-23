@@ -6,12 +6,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
-import com.example.studentteachercollaborations.Project;
+import com.example.studentteachercollaborations.AddProject;
 import com.example.studentteachercollaborations.R;
 
 public class FacultyActivity extends AppCompatActivity implements FacultyLoginPage.FacultyAuthListener, FacultyLoginPage.FacultySignUpListener,
         FacultySignUp.OnAddFacultySuccessListener, FacultyDashBoard.OnBooksClickListener, FacultySemesterList.OnFacultySemesterNoClick,
-        FacultyDashBoard.OnProjectClickListener, ProjectFaculty.OnAddProjectClick, Project.OnProjectAdded {
+        FacultyDashBoard.OnProjectClickListener, ProjectFaculty.OnAddProjectClick, AddProject.OnProjectAdded {
     private FragmentManager fragmentManager;
 
     @Override
@@ -87,9 +87,9 @@ public class FacultyActivity extends AppCompatActivity implements FacultyLoginPa
         Bundle bundle = new Bundle();
         bundle.putString("key", id);
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        Project project = new Project();
-        project.setArguments(bundle);
-        ft.replace(R.id.fragmentContainerFaculty, project);
+        AddProject addProject = new AddProject();
+        addProject.setArguments(bundle);
+        ft.replace(R.id.fragmentContainerFaculty, addProject);
         ft.addToBackStack(null);
         ft.commit();
     }

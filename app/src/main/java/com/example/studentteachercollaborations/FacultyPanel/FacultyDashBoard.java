@@ -14,8 +14,6 @@ import androidx.fragment.app.Fragment;
 import com.example.studentteachercollaborations.R;
 
 public class FacultyDashBoard extends Fragment {
-    private Context context;
-    private CardView books, thesis, projects, questions, helpline;
     private OnBooksClickListener booksClickListener;
     private OnProjectClickListener projectClickListener;
 
@@ -25,7 +23,6 @@ public class FacultyDashBoard extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
         booksClickListener = (OnBooksClickListener) context;
         projectClickListener = (OnProjectClickListener) context;
     }
@@ -33,17 +30,17 @@ public class FacultyDashBoard extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setTitle("DASHBOARD");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
-        books = view.findViewById(R.id.booksCV);
-        thesis = view.findViewById(R.id.thesisCV);
-        projects = view.findViewById(R.id.projectCV);
-        questions = view.findViewById(R.id.questionsCV);
-        helpline = view.findViewById(R.id.helpCV);
+        CardView books = view.findViewById(R.id.booksCV);
+        CardView thesis = view.findViewById(R.id.thesisCV);
+        CardView projects = view.findViewById(R.id.projectCV);
+        CardView questions = view.findViewById(R.id.questionsCV);
+        CardView helpline = view.findViewById(R.id.helplineCV);
+        CardView notice = view.findViewById(R.id.noticeCV);
 
         books.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +71,13 @@ public class FacultyDashBoard extends Fragment {
         });
 
         helpline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
