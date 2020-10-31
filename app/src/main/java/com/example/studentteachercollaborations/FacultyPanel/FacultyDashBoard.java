@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,9 @@ import com.example.studentteachercollaborations.R;
 public class FacultyDashBoard extends Fragment {
     private OnBooksClickListener booksClickListener;
     private OnProjectClickListener projectClickListener;
+    private OnNoticeClickListener noticeClickListener;
+    private OnThesisClickListener thesisClickListener;
+    private OnHelplineClickListener helplineClickListener;
 
     public FacultyDashBoard() {
     }
@@ -25,11 +29,15 @@ public class FacultyDashBoard extends Fragment {
         super.onAttach(context);
         booksClickListener = (OnBooksClickListener) context;
         projectClickListener = (OnProjectClickListener) context;
+        noticeClickListener = (OnNoticeClickListener) context;
+        thesisClickListener = (OnThesisClickListener) context;
+        helplineClickListener = (OnHelplineClickListener) context;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requireActivity().setTitle("DASHBOARD");
     }
 
     @Override
@@ -52,7 +60,7 @@ public class FacultyDashBoard extends Fragment {
         thesis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                thesisClickListener.onThesisClickSuccessful();
             }
         });
 
@@ -73,14 +81,14 @@ public class FacultyDashBoard extends Fragment {
         helpline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                helplineClickListener.onHelplineClickSuccessful();
             }
         });
 
         notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                noticeClickListener.noticeClickSuccessful();
             }
         });
 
@@ -94,5 +102,17 @@ public class FacultyDashBoard extends Fragment {
 
     public interface OnProjectClickListener{
         void onProjectClickSuccessful();
+    }
+
+    public interface OnNoticeClickListener{
+        void noticeClickSuccessful();
+    }
+
+    public interface OnThesisClickListener{
+        void onThesisClickSuccessful();
+    }
+
+    public interface OnHelplineClickListener{
+        void onHelplineClickSuccessful();
     }
 }

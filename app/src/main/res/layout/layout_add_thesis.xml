@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:id="@+id/thesiscons">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".05"/>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".95"/>
+
+                <!-- title of page-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/textViewThesis"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/thesiscons"
+                    app:layout_constraintRight_toRightOf="@id/gl_end"
+                    app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                    app:cardCornerRadius="18dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="102dp"
+                        android:gravity="center"
+                        android:text="Add a research paper"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:background="@color/colorBUBTBlue"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- title research paper-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/thesis_name"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="50dp"
+                    app:layout_constraintTop_toBottomOf="@id/textViewThesis"
+                    app:layout_constraintRight_toRightOf="@id/gl_end"
+                    app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                    app:cardCornerRadius="18dp"
+                    android:backgroundTint="#6d69df"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    Title of paper"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:layout_gravity="center"
+                        android:background="#6d69df"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- thesis title edit text -->
+                <RelativeLayout
+                    android:id="@+id/thesis_nameCV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/thesis_name"
+                    app:layout_constraintRight_toRightOf="@id/gl_end"
+                    app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                    android:background="@drawable/blue_border_rounded_cornwe"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/thesis_nameET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter your paper title"
+                        android:textColor="@color/colorBlack"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp" />
+                </RelativeLayout>
+
+                <!-- title research paper authors-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/thesis_authors"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintTop_toBottomOf="@id/thesis_nameCV"
+                    app:layout_constraintRight_toRightOf="@id/gl_end"
+                    app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                    app:cardCornerRadius="18dp"
+                    android:backgroundTint="#6d69df"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    Authors"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:layout_gravity="center"
+                        android:background="#6d69df"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- research paper authors edit text -->
+                <RelativeLayout
+                    android:id="@+id/thesis_authorsCV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/thesis_authors"
+                    app:layout_constraintRight_toRightOf="@id/gl_end"
+                    app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                    android:background="@drawable/blue_border_rounded_cornwe"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/thesis_authorsET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter authors name"
+                        android:textColor="@color/colorBlack"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        android:inputType="textMultiLine"/>
+                </RelativeLayout>
+
+                <!-- title research paper pdf-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/thesis_pdf"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintTop_toBottomOf="@id/thesis_authorsCV"
+                    app:layout_constraintRight_toRightOf="@id/gl_end"
+                    app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                    app:cardCornerRadius="18dp"
+                    android:backgroundTint="#6d69df"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="    PDF of paper"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:layout_gravity="center"
+                        android:background="#6d69df"
+                        />
+                </androidx.cardview.widget.CardView>
+
+                <!-- research paper pdf text view-->
+                <RelativeLayout
+                    android:id="@+id/thesis_pdfCV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/thesis_pdf"
+                    app:layout_constraintRight_toRightOf="@id/gl_end"
+                    app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                    android:background="@drawable/blue_border_rounded_cornwe"
+                    >
+                    <TextView
+                        android:id="@+id/thesis_pdfTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Click to select pdf file"
+                        android:textSize="22sp"
+                        android:textColor="@color/colorBlack"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"/>
+                </RelativeLayout>
+
+                <!-- save button -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/thesis_save_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="60dp"
+                    app:layout_constraintTop_toBottomOf="@id/thesis_pdfCV"
+                    app:layout_constraintRight_toRightOf="@id/gl_end"
+                    app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                    android:backgroundTint="@color/colorLightBlue"
+                    app:cardCornerRadius="15dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorLightBlue"
+                        android:text="@string/save"
+                        android:textAlignment="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:layout_gravity="center"
+                        />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

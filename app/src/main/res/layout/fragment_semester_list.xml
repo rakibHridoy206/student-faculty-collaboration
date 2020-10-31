@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/cons">
+
+            <!-- guideline vertical -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".05"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".95"/>
+
+            <!-- semester numbers -->
+            <!-- first -->
+            <TextView
+                android:id="@+id/firstSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/cons"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="first
+                semester"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:gravity="center_horizontal" />
+
+            <!-- second -->
+            <TextView
+                android:id="@+id/secondSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/firstSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="second
+                semester"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- third -->
+            <TextView
+                android:id="@+id/thirdSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/secondSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="third
+                semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- fourth -->
+            <TextView
+                android:id="@+id/fourthSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/thirdSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="fourth
+                semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- fifth -->
+            <TextView
+                android:id="@+id/fifthSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/fourthSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="fifth
+                semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- sixth -->
+            <TextView
+                android:id="@+id/sixthSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/fifthSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="sixth
+                semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- seventh -->
+            <TextView
+                android:id="@+id/seventhSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sixthSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="seventh
+                semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- eighth -->
+            <TextView
+                android:id="@+id/eighthSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/seventhSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="eighth
+                semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- ninth -->
+            <TextView
+                android:id="@+id/ninthSemeter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/eighthSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="ninth
+                semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- tenth -->
+            <TextView
+                android:id="@+id/tenthSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ninthSemeter"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="tenth
+                 semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- eleventh -->
+            <TextView
+                android:id="@+id/eleventhSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tenthSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="eleventh
+                 semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+            <!-- twelfth -->
+            <TextView
+                android:id="@+id/twelfthSemester"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/eleventhSemester"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                android:background="@drawable/blue_boarder_thick"
+                android:textColor="@color/colorBUBTBlue"
+                android:text="twelfth
+                semester"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:layout_marginTop="15dp"
+                android:textAllCaps="true"
+                android:gravity="center_horizontal"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

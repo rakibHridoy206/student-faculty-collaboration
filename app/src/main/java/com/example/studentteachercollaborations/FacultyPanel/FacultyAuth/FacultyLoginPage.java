@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations.FacultyPanel;
+package com.example.studentteachercollaborations.FacultyPanel.FacultyAuth;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -134,7 +134,7 @@ public class FacultyLoginPage extends Fragment {
                 LinearLayout.LayoutParams.WRAP_CONTENT
 
         );
-        lp.setMargins(200, 700, 0, 0);
+        lp.setMargins(200, 700, 200, 0);
         snackbarLayout.setLayoutParams(lp);
         snackbarLayout.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.colorLightBlue));
         make.show();

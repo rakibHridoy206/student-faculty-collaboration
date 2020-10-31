@@ -31,9 +31,7 @@ import java.util.List;
 
 public class ProjectFaculty extends Fragment {
     private Context context;
-    private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    private DatabaseReference databaseReferenceProjects;
     private ProjectAdapter projectAdapter;
     private OnAddProjectClick addProjectClick;
 
@@ -50,20 +48,17 @@ public class ProjectFaculty extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        requireActivity().setTitle("PROJECTS");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_projects, container, false);
-        final String[] facultyName = new String[1];
-        final String[] facultyDesignation = new String[1];
 
-        databaseReferenceProjects = FirebaseDatabase.getInstance().getReference("ProjectInformation");
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        final String userID = currentUser.getUid();
+        DatabaseReference databaseReferenceProjects = FirebaseDatabase.getInstance().getReference("ProjectInformation");
+        final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        fab = view.findViewById(R.id.addProjectFab);
+        FloatingActionButton fab = view.findViewById(R.id.addProjectFab);
         recyclerView = view.findViewById(R.id.projectRV);
 
         databaseReferenceProjects.addValueEventListener(new ValueEventListener() {
@@ -90,10 +85,13 @@ public class ProjectFaculty extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(userID.isEmpty()){
-                    Toast.makeText(context, "System cannot find your id", Toast.LENGTH_SHORT).show();
-                }else{
-                    addProjectClick.onAddProjectClickSuccessful(userID);
+                if(currentUser != null){
+                    final String userID = currentUser.getUid();
+                    if(userID.isEmpty()){
+                        Toast.makeText(context, "System cannot find your id", Toast.LENGTH_SHORT).show();
+                    }else{
+                        addProjectClick.onAddProjectClickSuccessful(userID);
+                    }
                 }
             }
         });

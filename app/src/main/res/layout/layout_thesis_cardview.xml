@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="#FFFAFA"
+    android:layout_margin="10dp"
+    android:id="@+id/thesisCardViewInfo">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:id="@+id/ccc">
+
+        <TextView
+            android:id="@+id/thesis_title_Cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/ccc"
+            android:textSize="25sp"
+            android:text="Android Applications with JAVA and Firebase"
+            android:textColor="@color/colorLightBlue"
+            android:textStyle="bold"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/thesis_authors_cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:textSize="20sp"
+            android:text="rakib, parvej, shina, tutul, mamun, basunia, karim"
+            android:textColor="@color/colorLightBlue"
+            app:layout_constraintTop_toBottomOf="@+id/thesis_title_Cardview"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

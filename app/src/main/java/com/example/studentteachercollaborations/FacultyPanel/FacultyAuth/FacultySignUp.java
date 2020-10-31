@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations.FacultyPanel;
+package com.example.studentteachercollaborations.FacultyPanel.FacultyAuth;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -27,6 +27,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.studentteachercollaborations.FacultyPanel.FacultyInfo;
 import com.example.studentteachercollaborations.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -191,7 +192,7 @@ public class FacultySignUp extends Fragment{
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     final String imageUrl = uri.toString();
-                                    Toast.makeText(context, "img "+imageUrl, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "img "+imageUrl, Toast.LENGTH_SHORT).show();
                                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {

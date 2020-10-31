@@ -202,6 +202,7 @@ public class StudentSignUp extends Fragment {
                                     });
                                 }
                             });
+                            pd.dismiss();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -234,7 +235,7 @@ public class StudentSignUp extends Fragment {
                 LinearLayout.LayoutParams.WRAP_CONTENT
 
         );
-        lp.setMargins(200, 700, 0, 0);
+        lp.setMargins(200, 700, 200, 0);
         snackbarLayout.setLayoutParams(lp);
         snackbarLayout.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.colorLightBlue));
         make.show();

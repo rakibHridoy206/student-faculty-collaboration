@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,10 +21,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentteachercollaborations.R;
 import com.example.studentteachercollaborations.ReadPdfActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -40,6 +43,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -51,6 +55,9 @@ public class FacultyBooksShow extends Fragment {
     private List<UploadPdfFiles> uploadFilesList;
     private String fileName;
     private String storageData;
+    private TextView uploadName;
+    private Uri uriData;
+    private ArrayAdapter<String> arrayAdapter;
 
     public FacultyBooksShow() {
     }
@@ -68,9 +75,8 @@ public class FacultyBooksShow extends Fragment {
         if (bundle != null){
             final String data = bundle.getString("key");
             storageData = data;
-            requireActivity().setTitle(data+" Semester Books");
+            requireActivity().setTitle(data+" SEMESTER BOOKS");
         }
-
     }
 
     @Override
@@ -79,7 +85,8 @@ public class FacultyBooksShow extends Fragment {
         listView = view.findViewById(R.id.pdfListView);
         FloatingActionButton fab = view.findViewById(R.id.pdfFAV);
 
-        storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference().child(storageData);
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("UploadedBooksLinks");
         databaseReferenceSemesters = databaseReference.child(storageData);
 
@@ -91,65 +98,29 @@ public class FacultyBooksShow extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String idM = Long.toString(id);
                 Toast.makeText(context, idM, Toast.LENGTH_SHORT).show();
-
-                final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.layout_select_type_pdf_faculty);
-
                 final int pos = position;
-                final FloatingActionButton favCancel;
-                final TextView delete, viewPDF;
 
-                favCancel = dialog.findViewById(R.id.cancelFaculty);
-                delete = dialog.findViewById(R.id.deleteBook);
-                viewPDF = dialog.findViewById(R.id.openPdfFaculty);
-
-                favCancel.setOnClickListener(new View.OnClickListener() {
+                final PopupMenu popup = new PopupMenu(context, view);
+                popup.inflate(R.menu.list_menu_faculty);
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.readPdfFaculty:
+                                readPdf(pos);
+                                return true;
+
+                            case R.id.deleteBookFaculty:
+                                deletePdf(pos);
+                                popup.dismiss();
+                                return true;
+
+                            default:
+                                return false;
+                        }
                     }
                 });
-
-                delete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        UploadPdfFiles uploadFile = uploadFilesList.get(pos);
-                        //String pdfURL = uploadFile.getUrl();
-                        final String pdfID = uploadFile.getId();
-                        String storageFileName = uploadFile.getStorageFileName();
-
-                        StorageReference deleteRef = storageReference.child(storageFileName);
-                        deleteRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                databaseReferenceSemesters.child(pdfID).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(context, "Successfully deleted from storage and database", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(context, "why man", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        dialog.dismiss();
-                    }
-                });
-
-                viewPDF.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        UploadPdfFiles uploadFile = uploadFilesList.get(pos);
-                        String url = uploadFile.getUrl();
-                        Intent intent = new Intent(v.getContext(), ReadPdfActivity.class);
-                        intent.putExtra("message",url);
-                        v.getContext().startActivity(intent);
-                    }
-                });
-                dialog.show();
+                popup.show();
             }
         });
 
@@ -160,15 +131,23 @@ public class FacultyBooksShow extends Fragment {
                 dialog.setContentView(R.layout.layout_add_books);
                 final EditText bookName;
                 final Button uploadBTN;
+                uploadName = dialog.findViewById(R.id.uploadName);
 
                 bookName = dialog.findViewById(R.id.fileNameET);
                 uploadBTN = dialog.findViewById(R.id.uploadPDF);
 
-                uploadBTN.setOnClickListener(new View.OnClickListener() {
+                uploadName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         fileName = bookName.getText().toString();
                         selectPdf();
+                    }
+                });
+
+                uploadBTN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        uploadPDF(uriData);
                         dialog.dismiss();
                     }
                 });
@@ -176,6 +155,95 @@ public class FacultyBooksShow extends Fragment {
             }
         });
         return view;
+    }
+
+    private void selectPdf() {
+        Intent intent = new Intent();
+        intent.setType("application/pdf");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select PDF File"),1);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1 && resultCode == RESULT_OK && data !=null && data.getData() != null){
+            uriData = data.getData();
+            uploadName.setText(data.getData().getLastPathSegment());
+        }
+    }
+
+    private void uploadPDF(final Uri data) {
+        final ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("UPLOADING....");
+        progressDialog.show();
+        final String storageFileName = data.getLastPathSegment();
+        if (storageFileName != null){
+            final StorageReference pdfName = storageReference.child(storageFileName);
+            pdfName.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    pdfName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            final String pdfUrl = uri.toString();
+                            String pdfID = databaseReferenceSemesters.push().getKey();
+                            UploadPdfFiles uploadFiles = new UploadPdfFiles(pdfID, fileName, pdfUrl, storageFileName);
+                            if (pdfID != null){
+                                databaseReferenceSemesters.child(pdfID).setValue(uploadFiles).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(context, "Book uploaded", Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                    progressDialog.dismiss();
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                    double progress = (100.0*taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+                    progressDialog.setMessage("Book Uploaded: "+(int)progress+"%");
+                }
+            });
+        }
+    }
+
+
+
+    private void deletePdf(int pos) {
+        UploadPdfFiles uploadFile = uploadFilesList.get(pos);
+        //String pdfURL = uploadFile.getUrl();
+        final String pdfID = uploadFile.getId();
+        String storageFileName = uploadFile.getStorageFileName();
+
+        StorageReference deleteRef = storageReference.child(storageFileName);
+        deleteRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                databaseReferenceSemesters.child(pdfID).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Successfully deleted from storage and database", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, "why man", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void readPdf(int pos) {
+        UploadPdfFiles uploadFile = uploadFilesList.get(pos);
+        String url = uploadFile.getUrl();
+        Intent intent = new Intent(context, ReadPdfActivity.class);
+        intent.putExtra("message",url);
+        startActivity(intent);
     }
 
     private void showAllPDFs() {
@@ -192,7 +260,8 @@ public class FacultyBooksShow extends Fragment {
                     uploads[i] = uploadFilesList.get(i).getName();
                 }
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, uploads){
+                arrayAdapter = new ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, uploads){
+                    @NonNull
                     @Override
                     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);
@@ -203,58 +272,12 @@ public class FacultyBooksShow extends Fragment {
                     }
                 };
                 listView.setAdapter(arrayAdapter);
+                registerForContextMenu(listView);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-    }
-
-    private void selectPdf() {
-        Intent intent = new Intent();
-        intent.setType("application/pdf");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select PDF File"),1);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && resultCode == RESULT_OK && data !=null && data.getData() != null){
-            uploadPDF(data.getData());
-        }
-    }
-
-    private void uploadPDF(Uri data) {
-        final ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setTitle("UPLOADING....");
-        progressDialog.show();
-        final String storageFileName = storageData + "/" + fileName + System.currentTimeMillis() + ".pdf";
-        StorageReference bookStorageReference = storageReference.child(storageFileName);
-        bookStorageReference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uri.isComplete()) {
-                    Uri url = uri.getResult();
-                    String pdfID = databaseReferenceSemesters.push().getKey();
-                    if (pdfID != null && url != null){
-                        UploadPdfFiles uploadFiles = new UploadPdfFiles(pdfID, fileName, url.toString(), storageFileName);
-                        databaseReferenceSemesters.child(pdfID).setValue(uploadFiles);
-                        Toast.makeText(context, "File has been uploaded", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                    }
-                }
-
-
-            }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                double progress = (100.0*taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
-                progressDialog.setMessage("Book Uploaded: "+(int)progress+"%");
             }
         });
     }

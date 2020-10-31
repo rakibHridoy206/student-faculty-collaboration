@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.studentteachercollaborations">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -12,14 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FacultyPanel.FacultyAuth.FacultyAuthActivity"></activity>
+        <activity
+            android:name=".FacultyPanel.FacultyNavigationDrawer"
+            android:label="@string/title_activity_faculty_navigation_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ReadPdfActivity" />
         <activity android:name=".StudentsPortal.StudentsActivity" />
-        <activity android:name=".FacultyPanel.FacultyActivity" />
         <activity android:name=".AdminPanelActivity" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/SplashScreen"
-            >
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

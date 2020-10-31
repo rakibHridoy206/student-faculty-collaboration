@@ -49,19 +49,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         final ProjectInfo info = projectInfoList.get(position);
         holder.projectNameTV.setText(projectInfoList.get(position).getProjectName());
         final String us = projectInfoList.get(position).getUserID();
-        final String uname, udes;
         userRef.child(us).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                String name = null;
-                String des = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                    name = Objects.requireNonNull(snapshot.child("facultyName").getValue()).toString();
-                    des = Objects.requireNonNull(snapshot.child("facultyDesignation").getValue()).toString();
-                }
-                holder.projectPosterName.setText(name);
-                holder.projectPosterDes.setText(des);
+                Object name = snapshot.child("facultyName").getValue();
+                Object designation = snapshot.child("facultyDesignation").getValue();
+                holder.projectPosterName.setText(String.valueOf(name));
+                holder.projectPosterDes.setText(String.valueOf(designation));
             }
 
             @Override
@@ -95,11 +89,10 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                 userRef.child(us).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        String name = snapshot.child("facultyName").getValue().toString();
-                        String des = snapshot.child("facultyDesignation").getValue().toString();
-                        userName.setText(name);
-                        userDes.setText(des);
+                        Object name = snapshot.child("facultyName").getValue();
+                        Object designation = snapshot.child("facultyDesignation").getValue();
+                        userName.setText(String.valueOf(name));
+                        userDes.setText(String.valueOf(designation));
                     }
 
                     @Override
@@ -113,6 +106,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                     @Override
                     public void onClick(View v) {
                         popupWindow.dismiss();
+                    }
+                });
+
+                projectLink.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
                     }
                 });
 

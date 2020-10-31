@@ -5,267 +5,217 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#D7F9FC">
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/consA">
 
-        <!-- guideline horizontal-->
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_title_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".04"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_title_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".2"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_name_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".3"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_description_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".35"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_description_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".46"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_link_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".51"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_link_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".61"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_button_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".99"/>
-
-        <!-- guideline vertical-->
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".05"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".95"/>
-
-
-
-        <!-- title -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/gl_title_start"
-            app:layout_constraintRight_toRightOf="@id/gl_end"
-            app:layout_constraintLeft_toLeftOf="@id/gl_start"
-            app:cardCornerRadius="7dp"
-            android:background="#3AB09E">
-
-            <TextView
-                android:id="@+id/textView"
+            <!-- guideline vertical-->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start"
                 android:layout_width="wrap_content"
-                android:layout_height="102dp"
-                android:gravity="center"
-                android:text="Add Project's Information"
-                android:textAllCaps="true"
-                android:textColor="#000000"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:background="#3AB09E"
-                />
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- addProject name title -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/project_name"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            app:layout_constraintTop_toBottomOf="@id/gl_title_end"
-            app:layout_constraintRight_toRightOf="@id/gl_end"
-            app:layout_constraintLeft_toLeftOf="@id/gl_start"
-            app:layout_constraintBottom_toBottomOf="@id/gl_name_end"
-            app:cardCornerRadius="15dp"
-            android:backgroundTint="#098B9A"
-            >
-            <TextView
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="  addProject name"
-                android:textSize="25sp"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                android:background="#098B9A"
-                />
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- addProject name edit text -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/project_nameCV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/gl_name_end"
-            app:layout_constraintRight_toRightOf="@id/gl_end"
-            app:layout_constraintLeft_toLeftOf="@id/gl_start"
-            app:cardCornerRadius="15dp"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/project_nameET"
-                android:layout_width="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".05"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter your addProject name"
-                />
-        </androidx.cardview.widget.CardView>
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".95"/>
 
-        <!-- addProject link text view -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/project_description"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            app:layout_constraintTop_toTopOf="@id/gl_description_start"
-            app:layout_constraintBottom_toBottomOf="@id/gl_description_end"
-            app:layout_constraintRight_toRightOf="@id/gl_end"
-            app:layout_constraintLeft_toLeftOf="@id/gl_start"
-            android:backgroundTint="@color/colorDarkCyan"
-            app:cardCornerRadius="15dp">
-            <TextView
-                android:layout_width="match_parent"
+            <!-- title -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="  link"
-                android:textSize="25sp"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                />
-        </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toTopOf="@id/consA"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:cardCornerRadius="18dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="102dp"
+                    android:gravity="center"
+                    android:text="Add Project's Information"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:background="@color/colorBUBTBlue"
+                    />
+            </androidx.cardview.widget.CardView>
 
-        <!-- addProject description edit text -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/project_descriptionCV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/gl_description_end"
-            app:layout_constraintRight_toRightOf="@id/gl_end"
-            app:layout_constraintLeft_toLeftOf="@id/gl_start"
-            app:cardCornerRadius="15dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/project_linkET"
-                android:layout_width="match_parent"
+            <!-- addProject name title -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/project_name"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintTop_toBottomOf="@id/textView"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                app:cardCornerRadius="18dp"
+                android:backgroundTint="@color/colorBUBTBlue"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="    Project name"
+                    android:textSize="25sp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    android:background="@color/colorBUBTBlue"
+                    />
+            </androidx.cardview.widget.CardView>
+
+            <!-- addProject name edit text -->
+            <RelativeLayout
+                android:id="@+id/project_nameCV"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Enter your addProject's shareable link (e.g. github/drive)"
-                android:inputType="textUri"
-                />
-        </androidx.cardview.widget.CardView>
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/project_name"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                android:background="@drawable/blue_border_rounded_cornwe"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/project_nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter your addProject name"
+                    android:textColor="@color/colorBlack"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp" />
+            </RelativeLayout>
 
-        <!-- addProject link text view -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/project_link"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            app:layout_constraintTop_toBottomOf="@id/gl_link_start"
-            app:layout_constraintRight_toRightOf="@id/gl_end"
-            app:layout_constraintLeft_toLeftOf="@id/gl_start"
-            app:layout_constraintBottom_toBottomOf="@id/gl_link_end"
-            android:backgroundTint="@color/colorDarkCyan"
-            app:cardCornerRadius="15dp">
+            <!-- addProject link text view -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/project_Link"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/project_nameCV"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                android:backgroundTint="@color/colorBUBTBlue"
+                app:cardCornerRadius="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="    link"
+                    android:textSize="25sp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    />
+            </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:layout_width="match_parent"
+            <!-- addProject link edit text -->
+            <RelativeLayout
+                android:id="@+id/project_LinkCV"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="  description"
-                android:textSize="25sp"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                />
-        </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toBottomOf="@id/project_Link"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                android:background="@drawable/blue_border_rounded_cornwe"
+                android:layout_marginTop="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/project_linkET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:hint="Enter your Project's shareable link (e.g. github/drive)"
+                    android:inputType="textUri"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+            </RelativeLayout>
 
-        <!-- addProject link edit text -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/project_linkCV"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/gl_link_end"
-            app:layout_constraintRight_toRightOf="@id/gl_end"
-            app:layout_constraintLeft_toLeftOf="@id/gl_start"
-            app:cardCornerRadius="15dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/project_descriptionET"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:gravity="start"
-                android:hint="Enter your addProject's description"
-                android:inputType="textMultiLine"
-                android:maxLength="500"/>
-        </androidx.cardview.widget.CardView>
+            <!-- addProject link text view -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/project_description"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/project_LinkCV"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                android:backgroundTint="@color/colorBUBTBlue"
+                app:cardCornerRadius="15dp">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_button_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".84"
-            />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="    description"
+                    android:textSize="25sp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    />
+            </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/project_save_button"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            app:layout_constraintTop_toBottomOf="@id/gl_button_start"
-            app:layout_constraintRight_toRightOf="@id/gl_end"
-            app:layout_constraintLeft_toLeftOf="@id/gl_start"
-            app:layout_constraintBottom_toBottomOf="@id/gl_button_end"
-            android:backgroundTint="#026124"
-            app:cardCornerRadius="15dp">
-
-            <TextView
-                android:layout_width="match_parent"
+            <!-- addProject link edit text -->
+            <RelativeLayout
+                android:id="@+id/project_descriptionCV"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="#026124"
-                android:text="@string/save"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                />
-        </androidx.cardview.widget.CardView>
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/project_description"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                android:background="@drawable/blue_border_rounded_cornwe"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/project_descriptionET"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="start"
+                    android:hint="Enter your Project's description"
+                    android:textColor="@color/colorBlack"
+                    android:inputType="textMultiLine"
+                    android:maxLength="500"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+            </RelativeLayout>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/project_save_button"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintTop_toBottomOf="@id/project_descriptionCV"
+                app:layout_constraintRight_toRightOf="@id/gl_end"
+                app:layout_constraintLeft_toLeftOf="@id/gl_start"
+                android:backgroundTint="@color/colorBUBTBlue"
+                app:cardCornerRadius="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBUBTBlue"
+                    android:text="@string/save"
+                    android:textAlignment="center"
+                    android:textSize="25sp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    />
+            </androidx.cardview.widget.CardView>
 
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.cardview.widget.CardView>

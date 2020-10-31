@@ -1,6 +1,5 @@
 package com.example.studentteachercollaborations;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -10,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.studentteachercollaborations.FacultyPanel.FacultyActivity;
+import com.example.studentteachercollaborations.FacultyPanel.FacultyAuth.FacultyAuthActivity;
 import com.example.studentteachercollaborations.StudentsPortal.StudentsActivity;
 
 public class MainActivity extends AppCompatActivity{
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void openFacultyPanel() {
-        Intent intent = new Intent(this, FacultyActivity.class);
+        Intent intent = new Intent(this, FacultyAuthActivity.class);
         startActivity(intent);
     }
 

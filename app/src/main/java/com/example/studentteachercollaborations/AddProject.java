@@ -40,6 +40,7 @@ public class AddProject extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_add_project, container, false);
+        requireActivity().setTitle("ADDING A PROJECT");
         databaseReferenceProjects = FirebaseDatabase.getInstance().getReference("ProjectInformation");
 
         Bundle bundle = this.getArguments();

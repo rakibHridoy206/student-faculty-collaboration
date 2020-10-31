@@ -6,29 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary">
-            <TextView
-                android:id="@+id/customBarTextViewFacultySignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="?attr/actionBarSize"
-                android:foregroundGravity="center"
-                android:layout_marginLeft="40dp"
-                android:textColor="@color/colorWhite"
-                android:text="dashboard"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:gravity="center_vertical"
-                android:layout_marginStart="40dp"
-                android:fontFamily="@font/staatliches_regular"/>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
 
     <GridLayout
         android:id="@+id/mainGrid"
@@ -59,7 +36,8 @@
             >
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,13 +48,15 @@
                         android:layout_height="100dp"
                         android:foreground="@drawable/prac"/>
                 </FrameLayout>
+
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginLeft="34dp"
                     android:background="@drawable/ic_bookshelf_1"
-                    android:layout_marginLeft="30dp" />
+                    />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -123,9 +103,9 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="30dp"
                     android:background="@drawable/ic_project_1"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_marginStart="34dp"
+                    android:layout_marginLeft="34dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -172,9 +152,9 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="34dp"
                     android:background="@drawable/ic_thesis_1"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_marginLeft="34dp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -220,9 +200,9 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="34dp"
                     android:background="@drawable/ic_questions_answers_1"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_marginLeft="34dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -270,9 +250,9 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="34dp"
                     android:background="@drawable/ic_helpline_1"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_marginLeft="34dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -318,9 +298,9 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="34dp"
                     android:background="@drawable/ic_noticeboard_1"
-                    android:layout_marginLeft="30dp" />
+                    android:layout_marginLeft="34dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -336,8 +316,5 @@
         </androidx.cardview.widget.CardView>
 
     </GridLayout>
-
-
-
 
 </LinearLayout>

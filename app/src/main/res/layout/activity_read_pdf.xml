@@ -7,6 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".ReadPdfActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+            <TextView
+                android:id="@+id/customBarTextViewFacultySignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:foregroundGravity="center"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorWhite"
+                android:text="Pdf viewer"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:gravity="center_vertical"
+                android:layout_marginStart="40dp"
+                android:fontFamily="@font/staatliches_regular"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/readPDF"
         android:layout_width="match_parent"
