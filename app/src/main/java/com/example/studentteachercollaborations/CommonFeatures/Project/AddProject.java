@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations;
+package com.example.studentteachercollaborations.CommonFeatures.Project;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.example.studentteachercollaborations.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +24,7 @@ public class AddProject extends Fragment{
     private Context context;
     private TextInputEditText projectNameET, projectDescriptionET, projectLinkET;
     private DatabaseReference databaseReferenceProjects;
-    private String currentUser;
+    private String userName, des;
     private OnProjectAdded projectAdded;
 
     public AddProject() {
@@ -45,7 +46,9 @@ public class AddProject extends Fragment{
 
         Bundle bundle = this.getArguments();
         if(bundle != null){
-            currentUser = bundle.getString("key");
+            userName = bundle.getString("name");
+            des = bundle.getString("des");
+
         }
 
 
@@ -63,13 +66,14 @@ public class AddProject extends Fragment{
                     String projectLink = projectLinkET.getText().toString();
                     String projectID = databaseReferenceProjects.push().getKey();
 
-                    ProjectInfo projectInfo = new ProjectInfo(projectID, projectName, projectDescription, projectLink, currentUser);
+                    ProjectInfo projectInfo = new ProjectInfo(projectID, projectName, projectDescription, projectLink, userName, des);
+
 
                     if (projectID != null){
                         databaseReferenceProjects.child(projectID).setValue(projectInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(context, "Your data have been collected, thank you!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Your data have been collected, thank you!"+userName+des, Toast.LENGTH_SHORT).show();
                                 projectAdded.onProjectAddedSuccessful();
 
                             }

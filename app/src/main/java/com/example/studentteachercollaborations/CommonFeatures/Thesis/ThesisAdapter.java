@@ -1,8 +1,7 @@
-package com.example.studentteachercollaborations;
+package com.example.studentteachercollaborations.CommonFeatures.Thesis;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.studentteachercollaborations.R;
+import com.example.studentteachercollaborations.ReadPdfActivity;
 
 import java.util.List;
 

@@ -14,8 +14,12 @@ import androidx.fragment.app.Fragment;
 import com.example.studentteachercollaborations.R;
 
 public class StudentDashBoard extends Fragment {
-    private Context context;
     private OnStudentsBooksClickListener booksClickListener;
+    private OnStudentProjectClickListener projectClickListener;
+    private OnStudentThesisClickListener thesisClickListener;
+    private OnStudentQuestionsClickListener questionsClickListener;
+    private OnStudentNoticeClickListener noticeClickListener;
+    private OnStudentHelplineClickListener helplineClickListener;
 
     public StudentDashBoard() {
     }
@@ -23,8 +27,12 @@ public class StudentDashBoard extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
         booksClickListener = (OnStudentsBooksClickListener) context;
+        projectClickListener = (OnStudentProjectClickListener) context;
+        thesisClickListener = (OnStudentThesisClickListener) context;
+        questionsClickListener = (OnStudentQuestionsClickListener) context;
+        noticeClickListener = (OnStudentNoticeClickListener) context;
+        helplineClickListener = (OnStudentHelplineClickListener) context;
     }
 
     @Override
@@ -35,7 +43,7 @@ public class StudentDashBoard extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
-        CardView books, thesis, projects, questions, helpline, notice;
+        final CardView books, thesis, projects, questions, helpline, notice;
         books = view.findViewById(R.id.booksCV);
         thesis = view.findViewById(R.id.thesisCV);
         projects = view.findViewById(R.id.projectCV);
@@ -53,6 +61,7 @@ public class StudentDashBoard extends Fragment {
         projects.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                projectClickListener.onStudentProjectClickSuccessful();
 
             }
         });
@@ -60,28 +69,28 @@ public class StudentDashBoard extends Fragment {
         thesis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                thesisClickListener.studentThesisClickSuccessful();
             }
         });
 
         questions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                questionsClickListener.studentQuestionsClickSuccessful();
             }
         });
 
         helpline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                helplineClickListener.studentHelplineClickSuccessful();
             }
         });
 
         notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                noticeClickListener.studentNoticeClickSuccessful();
             }
         });
         return view;
@@ -89,5 +98,25 @@ public class StudentDashBoard extends Fragment {
 
     public interface OnStudentsBooksClickListener{
         void onStudentsBooksClickSuccessful();
+    }
+
+    public interface OnStudentProjectClickListener{
+        void onStudentProjectClickSuccessful();
+    }
+
+    public interface OnStudentThesisClickListener{
+        void studentThesisClickSuccessful();
+    }
+
+    public interface OnStudentQuestionsClickListener{
+        void studentQuestionsClickSuccessful();
+    }
+
+    public interface OnStudentNoticeClickListener{
+        void studentNoticeClickSuccessful();
+    }
+
+    public interface OnStudentHelplineClickListener{
+        void studentHelplineClickSuccessful();
     }
 }

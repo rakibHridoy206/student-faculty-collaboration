@@ -2,14 +2,18 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    >
+    tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_profile"
+            android:id="@+id/nav_profileStudent"
             android:icon="@drawable/ic_baseline_account_box_24"
-            android:title="Profile" />
+            android:title="@string/profile" />
+
+        <item
+            android:id="@+id/navAnnexStudent"
+            android:icon="@drawable/ic_analysis_2"
+            android:title="@string/bubt_annex"/>
     </group>
 
 </menu>

@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations;
+package com.example.studentteachercollaborations.CommonFeatures.Thesis;
 
 public class ThesisInfo {
     private String id;

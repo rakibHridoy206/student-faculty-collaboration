@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations;
+package com.example.studentteachercollaborations.CommonFeatures;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -15,6 +15,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+
+import com.example.studentteachercollaborations.R;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class NoticeBoard extends Fragment {

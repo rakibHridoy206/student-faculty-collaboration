@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations.StudentsPortal;
+package com.example.studentteachercollaborations.StudentsPortal.StudentAuth;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -48,17 +48,13 @@ public class StudentLoginPage extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_login, container, false);
-        databaseReference = FirebaseDatabase.getInstance().getReference("STUDENTS_INFO");
         TextView customTV, loginBtn, signUpBtn;
         customTV = view.findViewById(R.id.customBarTextViewLogin);
-        customTV.setText("STUDENT LOGIN");
+        customTV.setText(R.string.studentLogin);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("STUDENTS_INFO");
         firebaseAuth = FirebaseAuth.getInstance();
         emailET = view.findViewById(R.id.emailInputET);
         passET = view.findViewById(R.id.passwordInputET);
@@ -87,8 +83,8 @@ public class StudentLoginPage extends Fragment {
                                     if (snapshot.exists()){
                                         if (task.isSuccessful()) {
                                             if(firebaseAuth.getCurrentUser() != null && firebaseAuth.getCurrentUser().isEmailVerified()){
-                                                studentAuthListener.onStudentLoginSuccessful();
                                                 snackbarShow("Successfully Logged In");
+                                                studentAuthListener.onStudentLoginSuccessful();
                                             }else {
                                                 snackbarShow("Please, first verify your email address");
                                             }

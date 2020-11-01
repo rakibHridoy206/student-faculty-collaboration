@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations.StudentsPortal;
+package com.example.studentteachercollaborations.StudentsPortal.StudentAuth;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.studentteachercollaborations.R;
+import com.example.studentteachercollaborations.StudentsPortal.StudentInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -80,7 +81,8 @@ public class StudentSignUp extends Fragment {
         View view = inflater.inflate(R.layout.fragment_student_sign_up, container, false);
         TextView customToolbar, registerBtn;
         customToolbar = view.findViewById(R.id.customBarTextViewStudentSignUp);
-        customToolbar.setText("STUDENT SIGN UP");
+        customToolbar.setText(R.string.studentSignUp);
+
         nameET = view.findViewById(R.id.studentNameInput);
         emailET = view.findViewById(R.id.studentEmailInput);
         phoneET = view.findViewById(R.id.studentPhoneNoInput);

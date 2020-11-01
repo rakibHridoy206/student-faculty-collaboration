@@ -23,4 +23,17 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="homePage">Home Page</string>
+    <string name="facultyLogin">FACULTY LOGIN</string>
+    <string name="studentLogin">STUDENT LOGIN</string>
+    <string name="facultySignUp">faculty SIGN UP</string>
+    <string name="studentSignUp">STUDENT SIGN UP</string>
+    <string name="title_activity_student_navigation_drawer">StudentNavigationDrawer</string>
+    <string name="download">Download</string>
+    <string name="read">Read</string>
+    <string name="delete">Delete</string>
+    <string name="profile">Profile</string>
+    <string name="todo">TODO</string>
+    <string name="bubt_annex">BUBT ANNEX</string>
+    <string name="log_out">Log out</string>
 </resources>

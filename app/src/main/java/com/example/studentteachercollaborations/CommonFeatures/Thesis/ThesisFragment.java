@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations;
+package com.example.studentteachercollaborations.CommonFeatures.Thesis;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.studentteachercollaborations.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

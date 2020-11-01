@@ -121,7 +121,7 @@
         </androidx.cardview.widget.CardView>
 
         <!-- ROW 2  -->
-        <!-- COLUMN 1  Thesis-->
+        <!-- COLUMN 1  com.example.studentteachercollaborations.CommonFeatures.Thesis-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/thesisCV"

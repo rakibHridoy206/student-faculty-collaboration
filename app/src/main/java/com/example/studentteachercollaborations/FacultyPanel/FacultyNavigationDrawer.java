@@ -7,19 +7,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.studentteachercollaborations.AddProject;
-import com.example.studentteachercollaborations.AddThesis;
+import com.example.studentteachercollaborations.CommonFeatures.Project.AddProject;
+import com.example.studentteachercollaborations.CommonFeatures.Thesis.AddThesis;
 import com.example.studentteachercollaborations.FacultyPanel.FacultyAuth.FacultyAuthActivity;
-import com.example.studentteachercollaborations.Helpline;
-import com.example.studentteachercollaborations.NoticeBoard;
+import com.example.studentteachercollaborations.CommonFeatures.Helpline;
+import com.example.studentteachercollaborations.CommonFeatures.NoticeBoard;
 import com.example.studentteachercollaborations.R;
-import com.example.studentteachercollaborations.ThesisFragment;
+import com.example.studentteachercollaborations.CommonFeatures.Thesis.ThesisFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -27,7 +23,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -37,10 +32,9 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
         FacultyDashBoard.OnBooksClickListener, FacultyDashBoard.OnProjectClickListener, FacultyDashBoard.OnNoticeClickListener,
         FacultyDashBoard.OnThesisClickListener, FacultyDashBoard.OnHelplineClickListener,
         FacultyBooksSemesterList.OnFacultySemesterClick,
-        ProjectFaculty.OnAddProjectClick, AddProject.OnProjectAdded,
+        ProjectFaculty.OnFacultyAddProjectClick, AddProject.OnProjectAdded,
         ThesisFragment.OnAddThesisClick, AddThesis.OnThesisPaperAddClick {
 
-    private AppBarConfiguration mAppBarConfiguration;
     private FragmentManager fragmentManager;
     private ImageView imageView;
 
@@ -50,8 +44,8 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
         setContentView(R.layout.activity_faculty_navigation_drawer);
         Toolbar toolbar = findViewById(R.id.toolbarFaculty);
         imageView = findViewById(R.id.profileShowNav);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("FACULTY_INFO");
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        //DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("FACULTY_INFO");
+      //  FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         /*if (currentUser != null){
             String uid = currentUser.getUid();
 
@@ -81,12 +75,7 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setDrawerLayout(drawer)
-                .build();
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -213,9 +202,10 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
     // UNDER PROJECT SECTION
     // add project button click
     @Override
-    public void onAddProjectClickSuccessful(String id) {
+    public void onAddProjectClickSuccessful(String name, String des) {
         Bundle bundle = new Bundle();
-        bundle.putString("key", id);
+        bundle.putString("name", name);
+        bundle.putString("des", des);
         FragmentTransaction ft = fragmentManager.beginTransaction();
         AddProject addProject = new AddProject();
         addProject.setArguments(bundle);

@@ -1,4 +1,4 @@
-package com.example.studentteachercollaborations.FacultyPanel;
+package com.example.studentteachercollaborations.StudentsPortal;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -28,36 +28,30 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectFaculty extends Fragment {
+public class ProjectStudents extends Fragment {
     private Context context;
     private RecyclerView recyclerView;
     private ProjectAdapter projectAdapter;
-    private OnFacultyAddProjectClick addProjectClick;
+    private OnStudentAddProjectClick studentAddProjectClick;
 
-    public ProjectFaculty() {
+    public ProjectStudents() {
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-        addProjectClick = (OnFacultyAddProjectClick) context;
+        studentAddProjectClick = (OnStudentAddProjectClick) context;
     }
 
+    @Nullable
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requireActivity().setTitle("PROJECTS");
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_projects, container, false);
-
+        requireActivity().setTitle("PROJECTS");
         DatabaseReference databaseReferenceProjects = FirebaseDatabase.getInstance().getReference("ProjectInformation");
-        final DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("FACULTY_INFO");
+        final DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("STUDENTS_INFO");
         final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
 
         FloatingActionButton fab = view.findViewById(R.id.addProjectFab);
         recyclerView = view.findViewById(R.id.projectRV);
@@ -94,11 +88,14 @@ public class ProjectFaculty extends Fragment {
                         userRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                Object name = snapshot.child("facultyName").getValue();
-                                Object designation = snapshot.child("facultyDesignation").getValue();
+                                Object name = snapshot.child("studentName").getValue();
+                                Object intake = snapshot.child("studentIntake").getValue();
+                                Object id = snapshot.child("studentId").getValue();
                                 String n = String.valueOf(name);
-                                String d = String.valueOf(designation);
-                                addProjectClick.onAddProjectClickSuccessful(n, d);
+                                String in = String.valueOf(intake);
+                                String i = String.valueOf(id);
+                                String d = "Intake: "+in+", ID: "+i;
+                                studentAddProjectClick.studentAddProjectClickSuccessful(n, d);
                             }
 
                             @Override
@@ -111,10 +108,11 @@ public class ProjectFaculty extends Fragment {
                 }
             }
         });
+
         return view;
     }
 
-    public interface OnFacultyAddProjectClick {
-        void onAddProjectClickSuccessful(String name, String designation);
+    public interface OnStudentAddProjectClick {
+        void studentAddProjectClickSuccessful(String name, String designation);
     }
 }

@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.studentteachercollaborations.FacultyPanel.FacultyAuth.FacultyAuthActivity;
-import com.example.studentteachercollaborations.StudentsPortal.StudentsActivity;
+import com.example.studentteachercollaborations.StudentsPortal.StudentAuth.StudentAuthActivity;
 
 public class MainActivity extends AppCompatActivity{
     Toolbar toolbar;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
         CardView adminTV, facultyTV, studentTV;
-        textView.setText("Home Page");
+        textView.setText(R.string.homePage);
 
         adminTV = findViewById(R.id.admin);
         facultyTV=findViewById(R.id.faculty);
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void openStudentPortal() {
-        Intent intent = new Intent(this, StudentsActivity.class);
+        Intent intent = new Intent(this, StudentAuthActivity.class);
         startActivity(intent);
     }
 

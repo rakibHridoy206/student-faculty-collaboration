@@ -43,7 +43,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -101,7 +100,7 @@ public class FacultyBooksShow extends Fragment {
                 final int pos = position;
 
                 final PopupMenu popup = new PopupMenu(context, view);
-                popup.inflate(R.menu.list_menu_faculty);
+                popup.inflate(R.menu.list_menu_faculty_books);
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {

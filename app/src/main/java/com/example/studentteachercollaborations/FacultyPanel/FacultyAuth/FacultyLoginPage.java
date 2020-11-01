@@ -48,17 +48,11 @@ public class FacultyLoginPage extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //requireActivity().setTitle("FACULTY LOGIN");
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_login, container, false);
         TextView customAppBar;
         customAppBar = view.findViewById(R.id.customBarTextViewLogin);
-        customAppBar.setText("FACULTY LOGIN");
+        customAppBar.setText(R.string.facultyLogin);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("FACULTY_INFO");
         firebaseAuth = FirebaseAuth.getInstance();
@@ -89,7 +83,6 @@ public class FacultyLoginPage extends Fragment {
                                     if (snapshot.exists()){
                                         if (task.isSuccessful()) {
                                             if(firebaseAuth.getCurrentUser() != null && firebaseAuth.getCurrentUser().isEmailVerified()){
-                                                facultyAuthListener.onFacultyLoginSuccessful();
                                                 snackbarShow("Successfully Logged In");
                                                 facultyAuthListener.onFacultyLoginSuccessful();
                                             }else {

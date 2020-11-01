@@ -1,28 +1,23 @@
-package com.example.studentteachercollaborations;
+package com.example.studentteachercollaborations.CommonFeatures.Project;
 
 public class ProjectInfo {
     private String projectID;
     private String projectName;
     private String projectDescription;
     private String projectLink;
-    private String userID;
+    private String userName;
+    private String userDesignation;
 
     public ProjectInfo() {
     }
 
-    public ProjectInfo(String projectID, String projectName, String projectDescription, String projectLink, String userID) {
+    public ProjectInfo(String projectID, String projectName, String projectDescription, String projectLink, String userName, String userDesignation) {
         this.projectID = projectID;
         this.projectName = projectName;
         this.projectDescription = projectDescription;
         this.projectLink = projectLink;
-        this.userID = userID;
-    }
-
-    public ProjectInfo(String projectID, String projectName, String projectDescription, String projectLink) {
-        this.projectID = projectID;
-        this.projectName = projectName;
-        this.projectDescription = projectDescription;
-        this.projectLink = projectLink;
+        this.userName = userName;
+        this.userDesignation = userDesignation;
     }
 
     public String getProjectID() {
@@ -57,11 +52,19 @@ public class ProjectInfo {
         this.projectLink = projectLink;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserDesignation() {
+        return userDesignation;
+    }
+
+    public void setUserDesignation(String userDesignation) {
+        this.userDesignation = userDesignation;
     }
 }

@@ -90,7 +90,8 @@ public class FacultySignUp extends Fragment{
         final View view = inflater.inflate(R.layout.fragment_faculty_sign_up, container, false);
         TextView customToolbar, registerBtn;
         customToolbar = view.findViewById(R.id.customBarTextViewFacultySignUp);
-        customToolbar.setText("faculty SIGN UP");
+        customToolbar.setText(R.string.facultySignUp);
+
         spinner = view.findViewById(R.id.facultySpinner);
         final CardView profileImageView = view.findViewById(R.id.profileImageFaculty);
         nameET = view.findViewById(R.id.facultyNameInput);
@@ -140,7 +141,7 @@ public class FacultySignUp extends Fragment{
 
             }
         });
-        adapter.setDropDownViewResource(R.layout.spinner_list);
+        adapter.setDropDownViewResource(R.layout.spinner_list_designation);
         spinner.setAdapter(adapter);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {

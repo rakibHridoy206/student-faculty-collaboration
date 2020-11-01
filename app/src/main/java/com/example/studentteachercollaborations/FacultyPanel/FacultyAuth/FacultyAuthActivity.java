@@ -11,7 +11,10 @@ import com.example.studentteachercollaborations.FacultyPanel.FacultyNavigationDr
 import com.example.studentteachercollaborations.R;
 
 public class FacultyAuthActivity extends AppCompatActivity implements
-        FacultyLoginPage.FacultyAuthListener, FacultyLoginPage.FacultySignUpListener, FacultySignUp.OnAddFacultySuccessListener {
+        FacultyLoginPage.FacultyAuthListener,
+        FacultyLoginPage.FacultySignUpListener,
+
+        FacultySignUp.OnAddFacultySuccessListener {
     private FragmentManager fragmentManager;
 
     @Override

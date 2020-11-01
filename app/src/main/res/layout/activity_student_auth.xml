@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragmentContainerFacultyAuth"
-    tools:context=".FacultyPanel.FacultyAuth.FacultyAuthActivity">
-
+    android:id="@+id/studentFragmentContainerAuthentication"
+    tools:context=".StudentsPortal.StudentAuth.StudentAuthActivity">
 </FrameLayout>
