@@ -41,7 +41,9 @@ public class StudentNavigationDrawer extends AppCompatActivity implements
         AddThesis.OnThesisPaperAddClick,
 
         ProjectStudents.OnStudentAddProjectClick,
-        AddProject.OnProjectAdded {
+        AddProject.OnProjectAdded,
+
+        StudentsQuestions.OnAskedQuestionStudentListener {
 
     private FragmentManager fragmentManager;
 
@@ -139,7 +141,11 @@ public class StudentNavigationDrawer extends AppCompatActivity implements
     /// question click
     @Override
     public void studentQuestionsClickSuccessful() {
-
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        StudentsQuestions studentsQuestions = new StudentsQuestions();
+        ft.replace(R.id.studentFragmentContainerMain, studentsQuestions);
+        ft.addToBackStack(null);
+        ft.commit();
     }
     /// notice click
     @Override
@@ -213,6 +219,18 @@ public class StudentNavigationDrawer extends AppCompatActivity implements
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ProjectStudents projectStudents = new ProjectStudents();
         ft.replace(R.id.studentFragmentContainerMain, projectStudents);
+        ft.commit();
+    }
+
+    @Override
+    public void askedQuestionStudentSuccessful(String id) {
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        AnswerPageStudent answerPageStudent = new AnswerPageStudent();
+        answerPageStudent.setArguments(bundle);
+        ft.replace(R.id.studentFragmentContainerMain, answerPageStudent);
+        ft.addToBackStack(null);
         ft.commit();
     }
 }

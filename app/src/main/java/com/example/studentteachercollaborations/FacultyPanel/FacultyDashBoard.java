@@ -20,6 +20,7 @@ public class FacultyDashBoard extends Fragment {
     private OnNoticeClickListener noticeClickListener;
     private OnThesisClickListener thesisClickListener;
     private OnHelplineClickListener helplineClickListener;
+    private OnQuestionsClickListener questionsClickListener;
 
     public FacultyDashBoard() {
     }
@@ -32,6 +33,7 @@ public class FacultyDashBoard extends Fragment {
         noticeClickListener = (OnNoticeClickListener) context;
         thesisClickListener = (OnThesisClickListener) context;
         helplineClickListener = (OnHelplineClickListener) context;
+        questionsClickListener = (OnQuestionsClickListener) context;
     }
 
     @Override
@@ -74,7 +76,7 @@ public class FacultyDashBoard extends Fragment {
         questions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                questionsClickListener.questionsClickSuccessful();
             }
         });
 
@@ -114,5 +116,9 @@ public class FacultyDashBoard extends Fragment {
 
     public interface OnHelplineClickListener{
         void onHelplineClickSuccessful();
+    }
+
+    public interface OnQuestionsClickListener{
+        void questionsClickSuccessful();
     }
 }

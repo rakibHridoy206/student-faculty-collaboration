@@ -84,7 +84,7 @@
                     app:layout_constraintTop_toBottomOf="@id/thesis_name"
                     app:layout_constraintRight_toRightOf="@id/gl_end"
                     app:layout_constraintLeft_toLeftOf="@id/gl_start"
-                    android:background="@drawable/blue_border_rounded_cornwe"
+                    android:background="@drawable/blue_border_rounded_corner"
                     >
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/thesis_nameET"
@@ -130,7 +130,7 @@
                     app:layout_constraintTop_toBottomOf="@id/thesis_authors"
                     app:layout_constraintRight_toRightOf="@id/gl_end"
                     app:layout_constraintLeft_toLeftOf="@id/gl_start"
-                    android:background="@drawable/blue_border_rounded_cornwe"
+                    android:background="@drawable/blue_border_rounded_corner"
                     >
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/thesis_authorsET"
@@ -177,7 +177,7 @@
                     app:layout_constraintTop_toBottomOf="@id/thesis_pdf"
                     app:layout_constraintRight_toRightOf="@id/gl_end"
                     app:layout_constraintLeft_toLeftOf="@id/gl_start"
-                    android:background="@drawable/blue_border_rounded_cornwe"
+                    android:background="@drawable/blue_border_rounded_corner"
                     >
                     <TextView
                         android:id="@+id/thesis_pdfTV"

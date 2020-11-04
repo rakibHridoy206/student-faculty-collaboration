@@ -54,7 +54,7 @@
             android:layout_marginLeft="62dp"
             android:layout_marginRight="62dp"
             android:layout_marginTop="36.7dp"
-            android:background="@drawable/blue_border_rounded_cornwe">
+            android:background="@drawable/blue_border_rounded_corner">
                 
             <EditText
                 android:id="@+id/emailInputET"
@@ -88,7 +88,7 @@
             android:layout_marginLeft="62dp"
             android:layout_marginRight="62dp"
             android:layout_marginTop="12.7dp"
-            android:background="@drawable/blue_border_rounded_cornwe">
+            android:background="@drawable/blue_border_rounded_corner">
 
             <EditText
                 android:id="@+id/passwordInputET"
@@ -129,7 +129,7 @@
             android:layout_marginRight="62dp"
             android:layout_marginTop="18.7dp"
             android:text="Login"
-            android:background="@drawable/blue_fill__rounded_color"
+            android:background="@drawable/blue_fill_rounded_color"
             android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
         <TextView

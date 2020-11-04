@@ -36,4 +36,8 @@
     <string name="todo">TODO</string>
     <string name="bubt_annex">BUBT ANNEX</string>
     <string name="log_out">Log out</string>
+    <string name="ask_a_question">add question\'s details</string>
+    <string name="post">Post</string>
+    <string name="enter_a_title">ask a question</string>
+    <string name="add_a_comment">add a comment</string>
 </resources>

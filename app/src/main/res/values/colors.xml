@@ -8,4 +8,6 @@
     <color name="colorDarkCyan">#098b9a</color>
     <color name="colorLightBlue">#6d69df</color>
     <color name="colorBUBTBlue">#0103F4</color>
+    <color name="colorDarkYellow">#f5cc00</color>
+    <color name="colorLightGreen">#8ac185</color>
 </resources>

@@ -38,34 +38,6 @@ public class ThesisAdapter extends RecyclerView.Adapter<ThesisAdapter.ViewHolder
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.thesisNameTV.setText(thesisInfoList.get(position).getTitle());
         holder.thesisAuthorsTV.setText(thesisInfoList.get(position).getAuthors());
-        /*holder.cardView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
-            @Override
-            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                final PopupMenu popup = new PopupMenu(context, v);
-                popup.inflate(R.menu.list_menu_thesis);
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()){
-                            case R.id.readThesisPaper:
-                                String url = thesisInfoList.get(position).getUrl();
-                                readPdf(url);
-                                return true;
-
-                            case R.id.downloadThesisPaper:
-                                //deletePdf(pos);
-                                popup.dismiss();
-                                return true;
-
-                            default:
-                                return false;
-                        }
-                    }
-                });
-            }
-        });*/
-
-
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

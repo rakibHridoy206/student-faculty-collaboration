@@ -31,9 +31,11 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
         FacultyDashBoard.OnBooksClickListener, FacultyDashBoard.OnProjectClickListener, FacultyDashBoard.OnNoticeClickListener,
         FacultyDashBoard.OnThesisClickListener, FacultyDashBoard.OnHelplineClickListener,
+        FacultyDashBoard.OnQuestionsClickListener,
         FacultyBooksSemesterList.OnFacultySemesterClick,
         ProjectFaculty.OnFacultyAddProjectClick, AddProject.OnProjectAdded,
-        ThesisFragment.OnAddThesisClick, AddThesis.OnThesisPaperAddClick {
+        ThesisFragment.OnAddThesisClick, AddThesis.OnThesisPaperAddClick,
+        FacultyQuestions.OnAskedQuestionClickListener {
 
     private FragmentManager fragmentManager;
     private ImageView imageView;
@@ -239,6 +241,28 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ThesisFragment thesisFragment = new ThesisFragment();
         ft.replace(R.id.facultyFragmentContainer, thesisFragment);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
+
+    @Override
+    public void questionsClickSuccessful() {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        FacultyQuestions facultyQuestions = new FacultyQuestions();
+        ft.replace(R.id.facultyFragmentContainer, facultyQuestions);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
+
+    @Override
+    public void askedQuestionClickSuccessful(String id) {
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        AnswerPageFaculty answerPageFaculty = new AnswerPageFaculty();
+        answerPageFaculty.setArguments(bundle);
+        ft.replace(R.id.facultyFragmentContainer, answerPageFaculty);
+        ft.addToBackStack(null);
         ft.commit();
     }
 }
