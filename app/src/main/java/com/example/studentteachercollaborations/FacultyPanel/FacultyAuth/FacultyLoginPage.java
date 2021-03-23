@@ -11,11 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentteachercollaborations.R;
+import com.example.studentteachercollaborations.utils.FacultyActivityStore;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +35,7 @@ public class FacultyLoginPage extends Fragment {
     private FacultyAuthListener facultyAuthListener;
     private FacultySignUpListener facultySignUpListener;
     private DatabaseReference databaseReference;
+    private FacultyActivityStore facultyActivityStore;
 
     public FacultyLoginPage() {
     }
@@ -53,6 +54,7 @@ public class FacultyLoginPage extends Fragment {
         TextView customAppBar;
         customAppBar = view.findViewById(R.id.customBarTextViewLogin);
         customAppBar.setText(R.string.facultyLogin);
+        facultyActivityStore = new FacultyActivityStore(requireActivity());
 
         databaseReference = FirebaseDatabase.getInstance().getReference("FACULTY_INFO");
         firebaseAuth = FirebaseAuth.getInstance();
@@ -60,6 +62,11 @@ public class FacultyLoginPage extends Fragment {
         passET = view.findViewById(R.id.passwordInputET);
         TextView loginBtn = view.findViewById(R.id.loginBtn);
         TextView signUpBtn = view.findViewById(R.id.signUpBTN);
+
+        if (facultyActivityStore.getLoginStatus())
+        {
+            facultyAuthListener.onFacultyLoginSuccessful();
+        }
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +92,7 @@ public class FacultyLoginPage extends Fragment {
                                             if(firebaseAuth.getCurrentUser() != null && firebaseAuth.getCurrentUser().isEmailVerified()){
                                                 snackbarShow("Successfully Logged In");
                                                 facultyAuthListener.onFacultyLoginSuccessful();
+                                                facultyActivityStore.setLoginStatus(true);
                                             }else {
                                                 snackbarShow("Please verify your email address");
                                             }

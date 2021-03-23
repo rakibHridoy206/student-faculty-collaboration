@@ -7,25 +7,27 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.studentteachercollaborations.CommonFeatures.Project.AddProject;
-import com.example.studentteachercollaborations.CommonFeatures.Thesis.AddThesis;
-import com.example.studentteachercollaborations.FacultyPanel.FacultyAuth.FacultyAuthActivity;
-import com.example.studentteachercollaborations.CommonFeatures.Helpline;
-import com.example.studentteachercollaborations.CommonFeatures.NoticeBoard;
-import com.example.studentteachercollaborations.R;
-import com.example.studentteachercollaborations.CommonFeatures.Thesis.ThesisFragment;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.studentteachercollaborations.CommonFeatures.Helpline;
+import com.example.studentteachercollaborations.CommonFeatures.NoticeBoard;
+import com.example.studentteachercollaborations.CommonFeatures.Project.AddProject;
+import com.example.studentteachercollaborations.CommonFeatures.Thesis.AddThesis;
+import com.example.studentteachercollaborations.CommonFeatures.Thesis.ThesisFragment;
+import com.example.studentteachercollaborations.FacultyPanel.FacultyAuth.FacultyAuthActivity;
+import com.example.studentteachercollaborations.FacultyPanel.faculty_chatting.FacultyChatHomeFragment;
+import com.example.studentteachercollaborations.R;
+import com.example.studentteachercollaborations.utils.FacultyActivityStore;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class FacultyNavigationDrawer extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
@@ -39,6 +41,7 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
 
     private FragmentManager fragmentManager;
     private ImageView imageView;
+    private FacultyActivityStore facultyActivityStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
         setContentView(R.layout.activity_faculty_navigation_drawer);
         Toolbar toolbar = findViewById(R.id.toolbarFaculty);
         imageView = findViewById(R.id.profileShowNav);
+        facultyActivityStore = new FacultyActivityStore(this);
         //DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("FACULTY_INFO");
       //  FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         /*if (currentUser != null){
@@ -91,14 +95,17 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
         ft.add(R.id.facultyFragmentContainer, dashBoard);
         ft.commit();
 
-        LinearLayout linearLayout = findViewById(R.id.logoutLinear);
+        LinearLayout linearLayout = findViewById(R.id.logout_linear_faculty);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(FacultyNavigationDrawer.this, FacultyAuthActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 snackbarShow();
+                facultyActivityStore.setLoginStatus(false);
+                finish();
             }
         });
 
@@ -248,7 +255,7 @@ public class FacultyNavigationDrawer extends AppCompatActivity implements
     @Override
     public void questionsClickSuccessful() {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        FacultyQuestions facultyQuestions = new FacultyQuestions();
+        FacultyChatHomeFragment facultyQuestions = new FacultyChatHomeFragment();
         ft.replace(R.id.facultyFragmentContainer, facultyQuestions);
         ft.addToBackStack(null);
         ft.commit();

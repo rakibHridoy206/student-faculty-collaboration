@@ -1,16 +1,17 @@
 package com.example.studentteachercollaborations;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+
 import com.example.studentteachercollaborations.FacultyPanel.FacultyAuth.FacultyAuthActivity;
 import com.example.studentteachercollaborations.StudentsPortal.StudentAuth.StudentAuthActivity;
+import com.example.studentteachercollaborations.admin.auth.AdminPanelActivity;
 
 public class MainActivity extends AppCompatActivity{
     Toolbar toolbar;

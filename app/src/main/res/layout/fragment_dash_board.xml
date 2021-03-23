@@ -201,14 +201,14 @@
                     android:layout_height="80dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginStart="34dp"
-                    android:background="@drawable/ic_questions_answers_1"
+                    android:background="@drawable/ic_chat_speech_bubble"
                     android:layout_marginLeft="34dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="160dp"
-                    android:text="questions"
+                    android:text="Chat"
                     android:textAllCaps="true"
                     android:gravity="center"
                     android:textSize="20sp"

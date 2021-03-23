@@ -1,5 +1,11 @@
 package com.example.studentteachercollaborations.StudentsPortal;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,19 +16,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-
 import com.example.studentteachercollaborations.CommonFeatures.Helpline;
+import com.example.studentteachercollaborations.CommonFeatures.NoticeBoard;
 import com.example.studentteachercollaborations.CommonFeatures.Project.AddProject;
 import com.example.studentteachercollaborations.CommonFeatures.Thesis.AddThesis;
-import com.example.studentteachercollaborations.FacultyPanel.FacultyAuth.FacultyAuthActivity;
-import com.example.studentteachercollaborations.CommonFeatures.NoticeBoard;
-import com.example.studentteachercollaborations.R;
 import com.example.studentteachercollaborations.CommonFeatures.Thesis.ThesisFragment;
+import com.example.studentteachercollaborations.FacultyPanel.FacultyAuth.FacultyAuthActivity;
+import com.example.studentteachercollaborations.R;
+import com.example.studentteachercollaborations.StudentsPortal.student_chatting.StudentChatHomeFragment;
+import com.example.studentteachercollaborations.utils.StudentActivityStore;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -46,12 +48,14 @@ public class StudentNavigationDrawer extends AppCompatActivity implements
         StudentsQuestions.OnAskedQuestionStudentListener {
 
     private FragmentManager fragmentManager;
+    private StudentActivityStore studentActivityStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_navigation_drawer);
 
+        studentActivityStore = new StudentActivityStore(this);
         Toolbar toolbar = findViewById(R.id.toolbarStudent);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.student_drawer_layout);
@@ -73,6 +77,7 @@ public class StudentNavigationDrawer extends AppCompatActivity implements
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                studentActivityStore.setLoginStatus(false);
                 Intent intent = new Intent(StudentNavigationDrawer.this, FacultyAuthActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -142,7 +147,7 @@ public class StudentNavigationDrawer extends AppCompatActivity implements
     @Override
     public void studentQuestionsClickSuccessful() {
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        StudentsQuestions studentsQuestions = new StudentsQuestions();
+        StudentChatHomeFragment studentsQuestions = new StudentChatHomeFragment();
         ft.replace(R.id.studentFragmentContainerMain, studentsQuestions);
         ft.addToBackStack(null);
         ft.commit();

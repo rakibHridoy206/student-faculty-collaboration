@@ -1,11 +1,11 @@
 package com.example.studentteachercollaborations.StudentsPortal.StudentAuth;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
-import android.os.Bundle;
 
 import com.example.studentteachercollaborations.R;
 import com.example.studentteachercollaborations.StudentsPortal.StudentNavigationDrawer;

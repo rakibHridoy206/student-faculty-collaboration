@@ -5,6 +5,7 @@ public class FacultyInfo {
     private String facultyName;
     private String facultyEmail;
     private String facultyPhone;
+    private String facultyDepartment;
     private String facultyDesignation;
     private String facultyPassword;
     private String facultyImageUrl;
@@ -12,23 +13,17 @@ public class FacultyInfo {
     public FacultyInfo() {
     }
 
-    public FacultyInfo(String facultyId, String facultyName, String facultyEmail, String facultyPhone, String facultyDesignation, String facultyPassword, String facultyImageUrl) {
+    public FacultyInfo(String facultyId, String facultyName, String facultyEmail,
+                       String facultyPhone, String facultyDepartment, String facultyDesignation,
+                       String facultyPassword, String facultyImageUrl) {
         this.facultyId = facultyId;
         this.facultyName = facultyName;
         this.facultyEmail = facultyEmail;
         this.facultyPhone = facultyPhone;
+        this.facultyDepartment = facultyDepartment;
         this.facultyDesignation = facultyDesignation;
         this.facultyPassword = facultyPassword;
         this.facultyImageUrl = facultyImageUrl;
-    }
-
-    public FacultyInfo(String facultyId, String facultyName, String facultyEmail, String facultyPhone, String facultyDesignation, String facultyPassword) {
-        this.facultyId = facultyId;
-        this.facultyName = facultyName;
-        this.facultyEmail = facultyEmail;
-        this.facultyPhone = facultyPhone;
-        this.facultyDesignation = facultyDesignation;
-        this.facultyPassword = facultyPassword;
     }
 
     public String getFacultyId() {
@@ -61,6 +56,14 @@ public class FacultyInfo {
 
     public void setFacultyPhone(String facultyPhone) {
         this.facultyPhone = facultyPhone;
+    }
+
+    public String getFacultyDepartment() {
+        return facultyDepartment;
+    }
+
+    public void setFacultyDepartment(String facultyDepartment) {
+        this.facultyDepartment = facultyDepartment;
     }
 
     public String getFacultyDesignation() {

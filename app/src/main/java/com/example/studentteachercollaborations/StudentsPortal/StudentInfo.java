@@ -5,6 +5,7 @@ public class StudentInfo {
     private String studentName;
     private String studentEmail;
     private String studentPhone;
+    private String studentDepartment;
     private String studentIntake;
     private String studentId;
     private String studentPassword;
@@ -13,12 +14,14 @@ public class StudentInfo {
     public StudentInfo() {
     }
 
-    public StudentInfo(String studentUserId, String studentName, String studentEmail, String studentPhone,
-                       String studentIntake, String studentId, String studentPassword, String imageUrl) {
+    public StudentInfo(String studentUserId, String studentName, String studentEmail,
+                       String studentPhone, String studentDepartment, String studentIntake,
+                       String studentId, String studentPassword, String imageUrl) {
         this.studentUserId = studentUserId;
         this.studentName = studentName;
         this.studentEmail = studentEmail;
         this.studentPhone = studentPhone;
+        this.studentDepartment = studentDepartment;
         this.studentIntake = studentIntake;
         this.studentId = studentId;
         this.studentPassword = studentPassword;
@@ -55,6 +58,10 @@ public class StudentInfo {
 
     public void setStudentPhone(String studentPhone) {
         this.studentPhone = studentPhone;
+    }
+
+    public String getStudentDepartment() {
+        return studentDepartment;
     }
 
     public String getStudentIntake() {

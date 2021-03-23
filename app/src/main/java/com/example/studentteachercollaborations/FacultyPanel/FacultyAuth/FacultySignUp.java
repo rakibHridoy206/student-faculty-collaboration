@@ -7,13 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.studentteachercollaborations.FacultyPanel.FacultyInfo;
 import com.example.studentteachercollaborations.R;
@@ -49,13 +48,24 @@ import java.io.IOException;
 import static android.app.Activity.RESULT_OK;
 
 public class FacultySignUp extends Fragment{
-    private String[] designations = {"SELECT ONE","Professor", "Associate Professor", "Assistant Professor", "Lecturer"};
+    private final String[] designations = {"Select One", "Professor", "Associate Professor", "Assistant Professor", "Lecturer"};
     private String designation;
+    private final String[] departments = {
+            "Choose One From Below",
+            "Computer Science & Engineering",
+            "Electrical & Electronic Engineering",
+            "Textile Engineering",
+            "Civil Engineering",
+            "Mathematics & Statistics",
+            "Management",  "Accounting", "Marketing", "Finance",
+            "English", "Economics", "Law & Justice"};
+    private String department;
     private EditText nameET, emailET, phoneET, passwordET, confirmPasswordET;
-    private Spinner spinner;
+    private Spinner spinner, deptSpinner;
     private ImageView profileShow;
     private Context context;
     private int mSelectedIndex = 0;
+    private int mdeptIndex = 0;
     private StorageReference storageReference;
     private Uri imageUri;
 
@@ -101,6 +111,7 @@ public class FacultySignUp extends Fragment{
         confirmPasswordET = view.findViewById(R.id.facultyConfirmPasswordInput);
         registerBtn = view.findViewById(R.id.facultyRegisterBTN);
         profileShow = view.findViewById(R.id.profileShow);
+        deptSpinner = view.findViewById(R.id.facultyDepartmentSpinner);
 
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,40 +120,8 @@ public class FacultySignUp extends Fragment{
             }
         });
 
-        ArrayAdapter<String> adapter;
-        adapter = new ArrayAdapter<String>(this.requireActivity(), android.R.layout.simple_spinner_dropdown_item, designations){
-            @NonNull
-            public View getView(int position, View convertView, @NonNull ViewGroup parent){
-                TextView tv = (TextView) super.getView(position, convertView, parent);
-                tv.setTextColor(Color.WHITE);
-                return tv;
-            }
-
-            @Override
-            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                TextView tv = (TextView) super.getDropDownView(position,convertView,parent);
-                tv.setTextColor(Color.WHITE);
-                if(position == mSelectedIndex){
-                    tv.setTextColor(Color.WHITE);
-                }
-                return tv;
-            }
-        };
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                designation = parent.getSelectedItem().toString();
-                mSelectedIndex = position;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        adapter.setDropDownViewResource(R.layout.spinner_list_designation);
-        spinner.setAdapter(adapter);
+        setUpDesignationSpinner();
+        setUpDepartmentSpinner();
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +132,7 @@ public class FacultySignUp extends Fragment{
                 final String password = passwordET.getText().toString();
                 final String confirmPassword = confirmPasswordET.getText().toString();
                 final String d = designation;
+                final String dept = department;
 
                 if(name.isEmpty()){
                     nameET.setError("Enter your name");
@@ -166,7 +146,9 @@ public class FacultySignUp extends Fragment{
                 }else if(phone.length()!=11){
                     phoneET.setError("Enter your valid mobile number");
                     phoneET.requestFocus();
-                }else if(designation.equals("Choose One From Below")){
+                }else if (dept != null && dept.equals("Choose One From Below")){
+                    deptSpinner.requestFocus();
+                } else if(d != null && d.equals("Select One")){
                     spinner.requestFocus();
                 }else if(password.isEmpty()){
                     passwordET.setError("Enter a password");
@@ -200,7 +182,7 @@ public class FacultySignUp extends Fragment{
                                             if(task.isSuccessful()){
                                                 if (FirebaseAuth.getInstance().getCurrentUser() != null){
                                                     String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                                    FacultyInfo facultyInfo = new FacultyInfo(id, name, email, phone, d, password, imageUrl);
+                                                    FacultyInfo facultyInfo = new FacultyInfo(id, name, email, phone, dept, d, password, imageUrl);
                                                     databaseReference.child(id).setValue(facultyInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
@@ -230,7 +212,6 @@ public class FacultySignUp extends Fragment{
                                                         }
                                                     });
                                                 }
-
                                             }
                                         }
                                     });
@@ -259,6 +240,82 @@ public class FacultySignUp extends Fragment{
         });
 
         return view;
+    }
+
+    private void setUpDepartmentSpinner() {
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(this.requireActivity(), android.R.layout.simple_spinner_dropdown_item, departments){
+            @NonNull
+            public View getView(int position, View convertView, @NonNull ViewGroup parent){
+                TextView tv = (TextView) super.getView(position, convertView, parent);
+                tv.setTextColor(Color.WHITE);
+                return tv;
+            }
+
+            @Override
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView tv = (TextView) super.getDropDownView(position, convertView, parent);
+                tv.setTextColor(Color.WHITE);
+                if(position == mdeptIndex){
+                    tv.setTextColor(Color.WHITE);
+                }
+                return tv;
+            }
+        };
+
+        deptSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                department = parent.getSelectedItem().toString();
+                Toast.makeText(context, department, Toast.LENGTH_SHORT).show();
+                mdeptIndex = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        adapter.setDropDownViewResource(R.layout.spinner_item_layout);
+        deptSpinner.setAdapter(adapter);
+    }
+
+    private void setUpDesignationSpinner() {
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(this.requireActivity(), android.R.layout.simple_spinner_dropdown_item, designations){
+            @NonNull
+            public View getView(int position, View convertView, @NonNull ViewGroup parent){
+                TextView tv = (TextView) super.getView(position, convertView, parent);
+                tv.setTextColor(Color.WHITE);
+                return tv;
+            }
+
+            @Override
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView tv = (TextView) super.getDropDownView(position,convertView,parent);
+                tv.setTextColor(Color.WHITE);
+                if(position == mSelectedIndex){
+                    tv.setTextColor(Color.WHITE);
+                }
+                return tv;
+            }
+        };
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                designation = parent.getSelectedItem().toString();
+                Toast.makeText(context, designation, Toast.LENGTH_SHORT).show();
+                mSelectedIndex = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        adapter.setDropDownViewResource(R.layout.spinner_item_layout);
+        spinner.setAdapter(adapter);
     }
 
     private void snackbarShow(String s){

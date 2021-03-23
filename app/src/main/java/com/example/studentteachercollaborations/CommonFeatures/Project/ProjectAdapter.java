@@ -1,5 +1,6 @@
 package com.example.studentteachercollaborations.CommonFeatures.Project;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.text.Layout;
@@ -16,11 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studentteachercollaborations.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -46,16 +44,17 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder,final int position) {
-        final ProjectInfo info = projectInfoList.get(position);
         holder.projectNameTV.setText(projectInfoList.get(position).getProjectName());
         holder.projectPosterName.setText(projectInfoList.get(position).getUserName());
         holder.projectPosterDes.setText(projectInfoList.get(position).getUserDesignation());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("WrongConstant")
             @Override
             public void onClick(View v) {
                 View popupView = LayoutInflater.from(context).inflate(R.layout.layout_project_details, null);
-                final PopupWindow popupWindow = new PopupWindow(popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                final PopupWindow popupWindow = new PopupWindow(
+                        popupView, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 final TextView projectName, projectDes, projectLink, userName, userDes;
                 FloatingActionButton floatingActionButton;
 

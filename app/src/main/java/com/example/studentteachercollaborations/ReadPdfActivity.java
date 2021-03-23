@@ -1,9 +1,9 @@
 package com.example.studentteachercollaborations;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.firebase.database.FirebaseDatabase;

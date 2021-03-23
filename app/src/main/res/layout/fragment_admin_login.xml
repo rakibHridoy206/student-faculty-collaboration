@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+            <TextView
+                android:id="@+id/customBarTextViewLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:foregroundGravity="center"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/admin_login"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:gravity="center_vertical"
+                android:layout_marginStart="40dp"
+                android:fontFamily="@font/staatliches_regular"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:background="@drawable/blue_bg">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="93dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_login_2"/>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="36.7dp"
+            android:background="@drawable/blue_border_rounded_corner">
+
+            <EditText
+                android:id="@+id/adminEmailInputET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_email"
+                android:hint="@string/email"
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:layout_toEndOf="@+id/icon_email"
+                android:paddingStart="17dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_email"
+                android:layout_width="14.7dp"
+                android:layout_height="10.3dp"
+                android:layout_marginStart="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/email"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="12.7dp"
+            android:background="@drawable/blue_border_rounded_corner">
+
+            <EditText
+                android:id="@+id/adminPasswordInputET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:layout_toEndOf="@+id/icon_pass"
+                android:paddingStart="17dp"
+                android:layout_toRightOf="@+id/icon_pass" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_pass"
+                android:layout_width="14.7dp"
+                android:layout_height="10.3dp"
+                android:layout_marginStart="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/password"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/adminLoginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="62dp"
+            android:layout_marginTop="18.7dp"
+            android:text="@string/login"
+            android:background="@drawable/blue_fill_rounded_color"
+            android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#1566e0"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:text="FORGOT PASSWORD ?"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
+
+</RelativeLayout>

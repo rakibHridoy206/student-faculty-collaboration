@@ -3,18 +3,16 @@ package com.example.studentteachercollaborations.CommonFeatures;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.studentteachercollaborations.R;
 

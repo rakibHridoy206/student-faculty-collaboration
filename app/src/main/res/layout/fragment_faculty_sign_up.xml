@@ -7,6 +7,7 @@
     android:background="@color/colorLightBlue"
     tools:context=".FacultyPanel.FacultyAuth.FacultySignUp">
 
+    <!-- App bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -31,6 +32,7 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- Body of Sign up-->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,6 +40,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <!-- Profile Image -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
@@ -93,6 +97,7 @@
                 </androidx.cardview.widget.CardView>
             </FrameLayout>
 
+            <!-- Name -->
             <EditText
                 android:id="@+id/facultyNameInput"
                 android:layout_width="match_parent"
@@ -122,6 +127,7 @@
                 android:textStyle="bold"
                 android:background="@color/colorLightBlue"/>
 
+            <!-- Email -->
             <EditText
                 android:id="@+id/facultyEmailInput"
                 android:layout_width="match_parent"
@@ -150,6 +156,7 @@
                 android:textStyle="bold"
                 android:background="@color/colorLightBlue"/>
 
+            <!-- Mobile -->
             <EditText
                 android:id="@+id/facultyPhoneNoInput"
                 android:layout_width="match_parent"
@@ -178,12 +185,48 @@
                 android:textStyle="bold"
                 android:background="@color/colorLightBlue"/>
 
+            <!-- Department -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="62dp"
                 android:layout_marginRight="62dp"
                 android:layout_marginTop="400dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:hint=""
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:paddingStart="17dp">
+
+                <Spinner
+                    android:id="@+id/facultyDepartmentSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="390dp"
+                android:text=" Department  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <!-- Designation -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="470dp"
                 android:background="@drawable/white_border_rounded_corner"
                 android:hint=""
                 android:textSize="12sp"
@@ -206,43 +249,16 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="80dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginTop="390dp"
+                android:layout_marginTop="460dp"
                 android:text=" Designation  "
                 android:textSize="15sp"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:background="@color/colorLightBlue"/>
 
+            <!-- Password -->
             <EditText
                 android:id="@+id/facultyPasswordInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="62dp"
-                android:layout_marginRight="62dp"
-                android:layout_marginTop="470dp"
-                android:background="@drawable/white_border_rounded_corner"
-                android:textSize="12sp"
-                android:textColor="@color/colorWhite"
-                android:paddingLeft="17dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:maxLines="1"
-                android:inputType="textPassword"
-                android:paddingStart="17dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_marginStart="80dp"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="460dp"
-                android:text=" Password  "
-                android:textSize="15sp"
-                android:textColor="@color/colorWhite"
-                android:textStyle="bold"
-                android:background="@color/colorLightBlue"/>
-
-            <EditText
-                android:id="@+id/facultyConfirmPasswordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="62dp"
@@ -263,34 +279,64 @@
                 android:layout_marginStart="80dp"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="530dp"
+                android:text=" Password  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
+            <!-- Confirm Password -->
+            <EditText
+                android:id="@+id/facultyConfirmPasswordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="610dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:paddingStart="17dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="600dp"
                 android:text=" Confirm Password  "
                 android:textSize="15sp"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:background="@color/colorLightBlue"/>
 
+            <!-- Sign up Button -->
             <TextView
                 android:id="@+id/facultyRegisterBTN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="62dp"
                 android:layout_marginRight="62dp"
-                android:layout_marginTop="640dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="700dp"
                 android:background="@drawable/blue_border_rounded_corner"
                 android:hint=""
                 android:textSize="15sp"
                 android:textColor="@color/colorLightBlue"
                 android:textStyle="bold"
-                android:text="                        Sign Up"
+                android:text="Sign Up"
+                android:gravity="center"
                 android:foreground="?attr/selectableItemBackground"
                 android:paddingLeft="17dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:maxLines="1"
                 android:paddingStart="17dp"/>
+
         </RelativeLayout>
-
     </androidx.core.widget.NestedScrollView>
-
-
 </RelativeLayout>

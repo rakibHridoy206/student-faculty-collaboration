@@ -40,4 +40,14 @@
     <string name="post">Post</string>
     <string name="enter_a_title">ask a question</string>
     <string name="add_a_comment">add a comment</string>
+    <string name="admin_login">Admin Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="parvej_alam">Parvej Alam</string>
+    <string name="_15162103103">15162103103</string>
+    <string name="department_name">Department Name</string>
+    <string name="intake">Intake</string>
+
+
 </resources>

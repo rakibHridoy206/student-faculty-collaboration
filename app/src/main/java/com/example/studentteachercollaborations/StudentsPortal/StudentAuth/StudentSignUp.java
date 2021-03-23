@@ -4,24 +4,27 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
-import android.provider.MediaStore;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.studentteachercollaborations.R;
 import com.example.studentteachercollaborations.StudentsPortal.StudentInfo;
@@ -46,8 +49,20 @@ import java.io.IOException;
 import static android.app.Activity.RESULT_OK;
 
 public class StudentSignUp extends Fragment {
-    private EditText nameET, emailET, phoneET, intakeET, idET, passwordET, confirmPasswordET;
+    private final String[] departments = {
+            "Choose One From Below",
+            "Computer Science & Engineering",
+            "Electrical & Electronic Engineering",
+            "Textile Engineering",
+            "Civil Engineering",
+            "Mathematics & Statistics",
+            "Management",  "Accounting", "Marketing", "Finance",
+            "English", "Economics", "Law & Justice"};
+    private String department;
+    private EditText nameET, emailET, phoneET, departmentET, intakeET, idET, passwordET, confirmPasswordET;
+    private Spinner spinner;
     private Context context;
+    private int mSelectedIndex = 0;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
     private OnAddStudentSuccessListener onAddStudentSuccessListener;
@@ -93,6 +108,7 @@ public class StudentSignUp extends Fragment {
         profileShow = view.findViewById(R.id.profileShowStudents);
         registerBtn = view.findViewById(R.id.studentRegisterBTN);
         final CardView profileImageView = view.findViewById(R.id.studentImageUpload);
+        spinner = view.findViewById(R.id.studentDepartmentInput);
 
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,12 +117,15 @@ public class StudentSignUp extends Fragment {
             }
         });
 
+        setUpSpinner();
+
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String name = nameET.getText().toString();
                 final String email = emailET.getText().toString();
                 final String phone = phoneET.getText().toString();
+                final String dept = department;
                 final String intake = intakeET.getText().toString();
                 final String id = idET.getText().toString();
                 final String password = passwordET.getText().toString();
@@ -125,6 +144,10 @@ public class StudentSignUp extends Fragment {
                 }else if(phone.length()!=11) {
                     phoneET.setError("Enter your valid mobile number");
                     phoneET.requestFocus();
+                }else if (dept.isEmpty()){
+                    spinner.requestFocus();
+                }else if (dept.equals("Choose One From Below")){
+                    spinner.requestFocus();
                 }else if(intake.isEmpty()){
                     intakeET.setError("Enter your intake number");
                     intakeET.requestFocus();
@@ -168,7 +191,7 @@ public class StudentSignUp extends Fragment {
 
                                                 if (user != null){
                                                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                                    StudentInfo studentInfo = new StudentInfo(userId, name, email, phone, intake, id, password, imageUrl);
+                                                    StudentInfo studentInfo = new StudentInfo(userId, name, email, phone, dept, intake, id, password, imageUrl);
                                                     databaseReference.child(userId).setValue(studentInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
@@ -227,6 +250,45 @@ public class StudentSignUp extends Fragment {
         });
 
         return view;
+    }
+
+    private void setUpSpinner() {
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(this.requireActivity(), android.R.layout.simple_spinner_dropdown_item, departments){
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView tv = (TextView) super.getView(position, convertView, parent);
+                tv.setTextColor(Color.WHITE);
+                return tv;
+            }
+
+            @Override
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                TextView tv = (TextView) super.getDropDownView(position, convertView, parent);
+                tv.setTextColor(Color.WHITE);
+                if (position == mSelectedIndex){
+                    tv.setTextColor(Color.WHITE);
+                }
+                return tv;
+            }
+        };
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                department = parent.getSelectedItem().toString();
+                mSelectedIndex = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        adapter.setDropDownViewResource(R.layout.spinner_item_layout);
+        spinner.setAdapter(adapter);
     }
 
     private void snackbarShow(String s){

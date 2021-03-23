@@ -182,13 +182,65 @@
                 android:textStyle="bold"
                 android:background="@color/colorLightBlue"/>
 
+
+            <!--<EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="400dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="number"
+                android:paddingStart="17dp">
+            </EditText>-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="62dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginTop="400dp"
+                android:background="@drawable/white_border_rounded_corner"
+                android:hint=""
+                android:textSize="12sp"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:paddingStart="17dp">
+
+                <Spinner
+                    android:id="@+id/studentDepartmentInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="390dp"
+                android:text=" Department  "
+                android:textSize="15sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:background="@color/colorLightBlue"/>
+
             <EditText
                 android:id="@+id/studentIntakeInput"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="62dp"
                 android:layout_marginRight="62dp"
-                android:layout_marginTop="400dp"
+                android:layout_marginTop="480dp"
                 android:background="@drawable/white_border_rounded_corner"
                 android:textSize="12sp"
                 android:textColor="@color/colorWhite"
@@ -205,7 +257,7 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="80dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginTop="390dp"
+                android:layout_marginTop="470dp"
                 android:text=" Intake  "
                 android:textSize="15sp"
                 android:textColor="@color/colorWhite"
@@ -218,7 +270,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="62dp"
                 android:layout_marginRight="62dp"
-                android:layout_marginTop="470dp"
+                android:layout_marginTop="560dp"
                 android:background="@drawable/white_border_rounded_corner"
                 android:textSize="12sp"
                 android:textColor="@color/colorWhite"
@@ -233,7 +285,7 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="80dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginTop="460dp"
+                android:layout_marginTop="550dp"
                 android:text=" ID  "
                 android:textSize="15sp"
                 android:textColor="@color/colorWhite"
@@ -246,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="62dp"
                 android:layout_marginRight="62dp"
-                android:layout_marginTop="540dp"
+                android:layout_marginTop="640dp"
                 android:background="@drawable/white_border_rounded_corner"
                 android:textSize="12sp"
                 android:textColor="@color/colorWhite"
@@ -261,7 +313,7 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="80dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginTop="530dp"
+                android:layout_marginTop="630dp"
                 android:text=" Password  "
                 android:textSize="15sp"
                 android:textColor="@color/colorWhite"
@@ -274,7 +326,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="62dp"
                 android:layout_marginRight="62dp"
-                android:layout_marginTop="610dp"
+                android:layout_marginTop="720dp"
                 android:background="@drawable/white_border_rounded_corner"
                 android:textSize="12sp"
                 android:textColor="@color/colorWhite"
@@ -289,7 +341,7 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="80dp"
                 android:layout_marginLeft="17dp"
-                android:layout_marginTop="600dp"
+                android:layout_marginTop="710dp"
                 android:text=" Confirm Password  "
                 android:textSize="15sp"
                 android:textColor="@color/colorWhite"
@@ -302,7 +354,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="62dp"
                 android:layout_marginRight="62dp"
-                android:layout_marginTop="715dp"
+                android:layout_marginTop="800dp"
                 android:background="@drawable/blue_border_rounded_corner"
                 android:hint=""
                 android:textSize="15sp"
@@ -315,11 +367,6 @@
                 android:paddingBottom="15dp"
                 android:maxLines="1"
                 android:paddingStart="17dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="770dp"/>
 
         </RelativeLayout>
 

@@ -11,11 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.studentteachercollaborations.R;
+import com.example.studentteachercollaborations.utils.StudentActivityStore;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +35,9 @@ public class StudentLoginPage extends Fragment {
     private StudentAuthListener studentAuthListener;
     private StudentSignUpListener signUpListener;
     private DatabaseReference databaseReference;
+    private StudentActivityStore studentActivityStore;
+
+
 
     public StudentLoginPage() {
     }
@@ -53,6 +56,7 @@ public class StudentLoginPage extends Fragment {
         TextView customTV, loginBtn, signUpBtn;
         customTV = view.findViewById(R.id.customBarTextViewLogin);
         customTV.setText(R.string.studentLogin);
+        studentActivityStore = new StudentActivityStore(requireActivity());
 
         databaseReference = FirebaseDatabase.getInstance().getReference("STUDENTS_INFO");
         firebaseAuth = FirebaseAuth.getInstance();
@@ -60,6 +64,12 @@ public class StudentLoginPage extends Fragment {
         passET = view.findViewById(R.id.passwordInputET);
         loginBtn = view.findViewById(R.id.loginBtn);
         signUpBtn = view.findViewById(R.id.signUpBTN);
+
+
+        if (studentActivityStore.getLoginStatus())
+        {
+            studentAuthListener.onStudentLoginSuccessful();
+        }
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +95,7 @@ public class StudentLoginPage extends Fragment {
                                             if(firebaseAuth.getCurrentUser() != null && firebaseAuth.getCurrentUser().isEmailVerified()){
                                                 snackbarShow("Successfully Logged In");
                                                 studentAuthListener.onStudentLoginSuccessful();
+                                                studentActivityStore.setLoginStatus(true);
                                             }else {
                                                 snackbarShow("Please, first verify your email address");
                                             }

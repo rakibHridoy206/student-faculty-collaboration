@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/department_name_cv"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/colorDarkCyan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/department_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/department_name"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+</androidx.cardview.widget.CardView>

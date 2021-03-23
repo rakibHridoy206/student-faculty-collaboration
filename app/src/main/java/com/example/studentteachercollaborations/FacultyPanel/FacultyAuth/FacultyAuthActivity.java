@@ -1,11 +1,11 @@
 package com.example.studentteachercollaborations.FacultyPanel.FacultyAuth;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Intent;
-import android.os.Bundle;
 
 import com.example.studentteachercollaborations.FacultyPanel.FacultyNavigationDrawer;
 import com.example.studentteachercollaborations.R;
@@ -32,8 +32,9 @@ public class FacultyAuthActivity extends AppCompatActivity implements
     @Override
     public void onFacultyLoginSuccessful() {
         Intent intent = new Intent(this, FacultyNavigationDrawer.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+       // intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     @Override
